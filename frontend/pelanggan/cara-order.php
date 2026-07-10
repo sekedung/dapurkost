@@ -24,7 +24,7 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dapurkost" id="mainNavbar">
   <div class="container">
-    <a class="navbar-brand navbar-brand-dk" href="home.html">
+    <a class="navbar-brand navbar-brand-dk" href="home.php">
       <img src="assets/images/logo-dapurkost.png" alt="Logo DapurKost">
       <span>DapurKost</span>
     </a>
@@ -33,12 +33,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mx-auto">
-        <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
-        <li class="nav-item"><a class="nav-link" href="paket.html">Paket</a></li>
-        <li class="nav-item"><a class="nav-link active" href="cara-order.html">Cara Order</a></li>
+        <li class="nav-item"><a class="nav-link" href="home.php">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="menu.php">Menu</a></li>
+        <li class="nav-item"><a class="nav-link" href="paket.php">Paket</a></li>
+        <li class="nav-item"><a class="nav-link active" href="cara-order.php">Cara Order</a></li>
       </ul>
-      <a href="menu.html" class="btn btn-navbar-order btn-ripple">Pesan Sekarang</a>
+      <a href="menu.php" class="btn btn-navbar-order btn-ripple">Pesan Sekarang</a>
     </div>
   </div>
 </nav>
@@ -170,7 +170,7 @@
     <div class="cta-section reveal show">
       <h2 class="cta-title">Siap Mencoba Kemudahannya?</h2>
       <p class="cta-desc">Mulai dari langkah pertama sekarang dan rasakan kemudahan makan harian tanpa ribet bersama DapurKost.</p>
-      <a href="menu.html" class="btn btn-cta btn-ripple"><i class="bi bi-basket me-2"></i>Mulai Pesan Sekarang</a>
+      <a href="menu.php" class="btn btn-cta btn-ripple"><i class="bi bi-basket me-2"></i>Mulai Pesan Sekarang</a>
     </div>
   </div>
 </section>

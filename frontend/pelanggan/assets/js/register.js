@@ -216,14 +216,7 @@
       showToast('Registrasi berhasil! Mengalihkan ke halaman login...');
 
       setTimeout(function(){
-        window.location.href = 'login.html';
-      }, 1200);
-    }, 1800);
-  });
-
-  /* ==========================================================
-     8. TOAST NOTIFIKASI
-  ========================================================== */
+          window.location.href = 'login.php';
   let toastTimeout;
   function showToast(message){
     const toast = document.getElementById('toastDK');

@@ -31,7 +31,7 @@
 ============================================================ -->
 <nav class="navbar navbar-expand-lg navbar-dapurkost" id="mainNavbar">
   <div class="container">
-    <a class="navbar-brand navbar-brand-dk" href="home.html">
+    <a class="navbar-brand navbar-brand-dk" href="home.php">
       <img src="assets/images/logo-dapurkost.png" alt="Logo DapurKost">
       <span>DapurKost</span>
     </a>
@@ -40,10 +40,10 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mx-auto">
-        <li class="nav-item"><a class="nav-link active" href="home.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
-        <li class="nav-item"><a class="nav-link" href="paket.html">Paket</a></li>
-        <li class="nav-item"><a class="nav-link" href="cara-order.html">Cara Order</a></li>
+        <li class="nav-item"><a class="nav-link active" href="home.php">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="menu.php">Menu</a></li>
+        <li class="nav-item"><a class="nav-link" href="paket.php">Paket</a></li>
+        <li class="nav-item"><a class="nav-link" href="cara-order.php">Cara Order</a></li>
       </ul>
       <a href="#pesan" class="btn btn-navbar-order btn-ripple">Pesan Sekarang</a>
     </div>
@@ -65,7 +65,7 @@
         </p>
         <div class="hero-btn-group">
           <a href="#paket" class="btn btn-primary-dk btn-ripple"><i class="bi bi-bag-check me-2"></i>Mulai Berlangganan</a>
-          <a href="menu.html" class="btn btn-outline-dk btn-ripple"><i class="bi bi-book me-2"></i>Lihat Menu</a>
+          <a href="menu.php" class="btn btn-outline-dk btn-ripple"><i class="bi bi-book me-2"></i>Lihat Menu</a>
         </div>
         <div class="hero-stats">
           <div>

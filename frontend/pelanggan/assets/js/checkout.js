@@ -72,7 +72,7 @@
     });
 
     if(orderItems.length === 0){
-      orderItemsList.innerHTML = '<p style="text-align:center; color:#8a5a5a; padding:20px 0;">Belum ada menu dipilih. <a href="menu.html" style="color:var(--merah); font-weight:600;">Pilih menu sekarang</a>.</p>';
+      orderItemsList.innerHTML = '<p style="text-align:center; color:#8a5a5a; padding:20px 0;">Belum ada menu dipilih. <a href="menu.php" style="color:var(--merah); font-weight:600;">Pilih menu sekarang</a>.</p>';
     }
 
     calculateTotal();

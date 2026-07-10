@@ -197,7 +197,7 @@
       showToast('Berhasil logout. Mengalihkan ke halaman login...');
 
       setTimeout(function(){
-        window.location.href = 'login.html';
+        window.location.href = 'login.php';
       }, 1200);
     }, 1400);
   });

@@ -105,7 +105,7 @@
       showToast('Login berhasil! Mengalihkan ke beranda...');
 
       setTimeout(function(){
-        window.location.href = 'home.html';
+        window.location.href = 'home.php';
       }, 1200);
     }, 1800);
   });

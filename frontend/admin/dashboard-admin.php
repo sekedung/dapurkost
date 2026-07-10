@@ -73,7 +73,7 @@ rel="stylesheet">
 
         </a>
 
-        <a href="menu-admin.html">
+        <a href="menu-admin.php">
 
             <i class="bi bi-cup-hot"></i>
 
@@ -81,7 +81,7 @@ rel="stylesheet">
 
         </a>
 
-        <a href="paket-admin.html">
+        <a href="paket-admin.php">
 
             <i class="bi bi-box-seam"></i>
 
@@ -89,7 +89,7 @@ rel="stylesheet">
 
         </a>
 
-        <a href="pesanan-admin.html">
+        <a href="pesanan-admin.php">
 
             <i class="bi bi-bag-check"></i>
 
@@ -97,7 +97,7 @@ rel="stylesheet">
 
         </a>
 
-        <a href="pelanggan-admin.html">
+        <a href="pelanggan-admin.php">
 
             <i class="bi bi-people-fill"></i>
 
@@ -105,7 +105,7 @@ rel="stylesheet">
 
         </a>
 
-        <a href="pembayaran-admin.html">
+        <a href="pembayaran-admin.php">
 
             <i class="bi bi-credit-card-2-front"></i>
 
@@ -113,7 +113,7 @@ rel="stylesheet">
 
         </a>
 
-        <a href="laporan-admin.html">
+        <a href="laporan-admin.php">
 
             <i class="bi bi-bar-chart-line"></i>
 
@@ -127,7 +127,7 @@ rel="stylesheet">
 
     <div class="logout">
 
-        <a href="login-admin.html">
+        <a href="login-admin.php">
 
             <i class="bi bi-box-arrow-right"></i>
 

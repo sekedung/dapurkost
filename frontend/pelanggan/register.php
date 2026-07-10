@@ -141,7 +141,7 @@
         </button>
 
         <div class="register-link-wrap">
-          Sudah punya akun? <a href="login.html">Login di sini</a>
+          Sudah punya akun? <a href="login.php">Login di sini</a>
         </div>
 
       </form>

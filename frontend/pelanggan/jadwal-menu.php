@@ -33,12 +33,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mx-auto">
-        <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
-        <li class="nav-item"><a class="nav-link" href="paket.html">Paket</a></li>
-        <li class="nav-item"><a class="nav-link" href="cara-order.html">Cara Order</a></li>
+        <li class="nav-item"><a class="nav-link" href="home.php">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="menu.php">Menu</a></li>
+        <li class="nav-item"><a class="nav-link" href="paket.php">Paket</a></li>
+        <li class="nav-item"><a class="nav-link" href="cara-order.php">Cara Order</a></li>
       </ul>
-      <a href="paket.html" class="btn btn-navbar-order btn-ripple">Lihat Paket</a>
+      <a href="paket.php" class="btn btn-navbar-order btn-ripple">Lihat Paket</a>
     </div>
   </div>
 </nav>

@@ -24,7 +24,7 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dapurkost" id="mainNavbar">
   <div class="container">
-    <a class="navbar-brand navbar-brand-dk" href="home.html">
+    <a class="navbar-brand navbar-brand-dk" href="home.php">
       <img src="assets/images/logo-dapurkost.png" alt="Logo DapurKost">
       <span>DapurKost</span>
     </a>
@@ -33,10 +33,10 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mx-auto">
-        <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
-        <li class="nav-item"><a class="nav-link" href="paket.html">Paket</a></li>
-        <li class="nav-item"><a class="nav-link" href="cara-order.html">Cara Order</a></li>
+        <li class="nav-item"><a class="nav-link" href="home.php">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="menu.php">Menu</a></li>
+        <li class="nav-item"><a class="nav-link active" href="paket.php">Paket</a></li>
+        <li class="nav-item"><a class="nav-link" href="cara-order.php">Cara Order</a></li>
       </ul>
       <a href="#paket-cards" class="btn btn-navbar-order btn-ripple">Pesan Sekarang</a>
     </div>

@@ -278,14 +278,12 @@ document.getElementById("lanjutOrderBtn").addEventListener("click", function(){
 
   if(!isLoggedIn){
     // simpan tujuan redirect setelah login berhasil
-    localStorage.setItem("dapurkost_redirect_after_login", "checkout.html");
-    window.location.href = "login.html";
+    localStorage.setItem("dapurkost_redirect_after_login", "checkout.php");
+    window.location.href = "login.php";
     return;
   }
 
-  window.location.href = "checkout.html";
-});
-
+  window.location.href = "checkout.php";
 document.getElementById("openCartFromNav").addEventListener("click", function(e){
   e.preventDefault();
   const offcanvas = new bootstrap.Offcanvas(document.getElementById("sideCart"));
