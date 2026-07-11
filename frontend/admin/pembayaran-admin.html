@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Kelola Pembayaran | DapurKost</title>
+
+<!-- Google Font -->
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<!-- Bootstrap -->
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+rel="stylesheet">
+
+<!-- Bootstrap Icons -->
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+rel="stylesheet">
+
+<style>
+
+:root{
+
+--cream:#FEF9E1;
+--white:#FFFFFF;
+--red:#A31D1D;
+--dark:#6D2323;
+--gold:#E5D0AC;
+--text:#2B2B2B;
+--gray:#777;
+
+--shadow:
+0 10px 30px rgba(0,0,0,.08);
+
+}
+
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+
+}
+
+body{
+
+background:var(--cream);
+color:var(--text);
+
+}
+
+/* ==========================
+SIDEBAR
+========================== */
+
+.sidebar{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:230px;
+
+height:100vh;
+
+background:linear-gradient(
+180deg,
+var(--red),
+var(--dark));
+
+padding:18px 20px;
+
+color:white;
+
+display:flex;
+
+flex-direction:column;
+
+}
+
+.logo{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+margin-bottom:18px;
+
+}
+
+.logo-icon{
+
+width: 48px;
+height: 48px;
+
+border-radius:15px;
+
+background:rgba(255,255,255,.15);
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+font-size:24px;
+
+}
+
+.logo h3{
+
+margin:0;
+
+font-size:20px;
+
+font-weight:700;
+
+}
+
+.logo p{
+
+margin:0;
+
+opacity:.8;
+
+font-size:13px;
+
+}
+
+/* ==========================
+MENU
+========================== */
+
+.sidebar-menu{
+
+margin-top:0px;
+
+}
+
+.sidebar-menu a{
+
+display:flex;
+
+align-items:center;
+
+gap:14px;
+
+text-decoration:none;
+
+color:white;
+
+padding:15px 18px;
+
+border-radius:14px;
+
+margin-bottom:8px;
+
+transition:.25s;
+
+font-weight:500;
+
+}
+
+.sidebar-menu a:hover{
+
+background:rgba(255,255,255,.15);
+
+transform:translateX(5px);
+
+}
+
+.sidebar-menu .active{
+
+background:white;
+
+color:var(--red);
+
+font-weight:600;
+
+}
+
+.sidebar-menu i{
+
+font-size:16px;
+
+width:22px;
+
+}
+
+/* ==========================
+LOGOUT
+========================== */
+
+.logout{
+
+margin-top:auto;
+
+}
+
+.logout a{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+text-decoration:none;
+
+padding:15px 18px;
+
+border-radius:16px;
+
+background:rgba(255,255,255,.12);
+
+color:white;
+
+transition:.3s;
+
+}
+
+.logout a:hover{
+
+background:white;
+
+color:var(--red);
+
+}
+
+/* ==========================
+CONTENT
+========================== */
+
+.main{
+
+margin-left:230px;
+
+padding:24px 28px;
+
+}
+
+/* ==========================
+TOPBAR
+========================== */
+
+.topbar{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:35px;
+
+}
+
+.topbar h2{
+
+font-weight:700;
+
+font-size:34px;
+
+color:var(--dark);
+
+margin-bottom:5px;
+
+}
+
+.topbar p{
+
+margin:0;
+
+font-size:16px;
+
+color:var(--gray);
+
+}
+
+.admin-info{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+}
+
+.notification{
+
+position:relative;
+
+font-size:24px;
+
+cursor:pointer;
+
+}
+
+.badge-notif{
+
+position:absolute;
+
+top:-6px;
+right:-6px;
+
+background:#dc3545;
+
+color:white;
+
+font-size:11px;
+
+width:18px;
+height:18px;
+
+border-radius:50%;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+}
+
+.avatar{
+
+width:42px;
+height:42px;
+
+border-radius:50%;
+
+background:var(--gold);
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+font-size:24px;
+
+}
+
+/* ==========================
+CARD
+========================== */
+
+.dashboard-card{
+
+background:white;
+
+border:none;
+
+border-radius:18px;
+
+padding:18px;
+
+box-shadow:var(--shadow);
+
+transition:.25s;
+
+height:100%;
+
+}
+
+.dashboard-card:hover{
+
+transform:translateY(-4px);
+
+}
+
+.card-icon{
+
+width:52px;
+height:52px;
+
+border-radius:18px;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+font-size:22px;
+
+margin-bottom:14px;
+
+color:white;
+
+}
+
+.bg-red{
+
+background:var(--red);
+
+}
+
+.bg-gold{
+
+background:#D4A017;
+
+}
+
+.bg-green{
+
+background:#2E8B57;
+
+}
+
+.bg-blue{
+
+background:#3B82F6;
+
+}
+
+.dashboard-card h3{
+
+font-size:28px;
+
+font-weight:700;
+
+margin:4px 0;
+
+}
+
+.dashboard-card p{
+
+font-size:15px;
+margin:0;
+
+color:var(--gray);
+
+}
+
+.dashboard-card small{
+
+font-size:13px;
+
+}
+
+.table-card,
+.quick-card{
+
+margin-top:30px;
+
+background:white;
+
+border-radius:18px;
+
+padding:20px;
+
+box-shadow:var(--shadow);
+
+}
+
+.table-card h4,
+.quick-card h4{
+
+font-weight:700;
+
+font-size:22px;
+color:var(--dark);
+
+margin-bottom:20px;
+
+}
+.table th,
+.table td{
+
+padding:12px;
+
+font-size:14px;
+
+vertical-align:middle;
+
+}
+
+.quick-card .btn{
+
+padding:10px;
+
+font-size:15px;
+
+border-radius:12px;
+
+}
+
+/* ==========================
+KELOLA PEMBAYARAN — TAMBAHAN
+========================== */
+
+.admin-toolbar{
+
+display:flex;
+
+align-items:center;
+
+justify-content:flex-start;
+
+gap:12px;
+
+margin-bottom:20px;
+
+flex-wrap:wrap;
+
+}
+
+.admin-search{
+
+position:relative;
+
+flex:1;
+
+min-width:220px;
+
+max-width:320px;
+
+}
+
+.admin-search i{
+
+position:absolute;
+
+top:50%;
+
+left:14px;
+
+transform:translateY(-50%);
+
+color:var(--gray);
+
+font-size:14px;
+
+}
+
+.admin-search input{
+
+border-radius:12px;
+
+padding:10px 14px 10px 38px;
+
+border:1.5px solid #eee;
+
+font-size:14px;
+
+width:100%;
+
+}
+
+.admin-search input:focus{
+
+outline:none;
+
+border-color:var(--red);
+
+box-shadow:0 0 0 3px rgba(163,29,29,.08);
+
+}
+
+.admin-filter select{
+
+border-radius:12px;
+
+padding:10px 14px;
+
+border:1.5px solid #eee;
+
+font-size:14px;
+
+background:white;
+
+min-width:170px;
+
+}
+
+.admin-filter select:focus{
+
+outline:none;
+
+border-color:var(--red);
+
+}
+
+.avatar-sm{
+
+width:38px;
+height:38px;
+
+border-radius:50%;
+
+background:var(--cream);
+
+border:1.5px solid var(--gold);
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:16px;
+
+font-weight:600;
+
+color:var(--dark);
+
+flex-shrink:0;
+
+}
+
+.nama-cell{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+}
+
+.nama-cell strong{
+
+font-size:14px;
+
+color:var(--text);
+
+}
+
+.action-btns{
+
+display:flex;
+
+gap:6px;
+
+flex-wrap:nowrap;
+
+}
+
+.action-btns .btn{
+
+border-radius:10px;
+
+padding:6px 10px;
+
+font-size:13px;
+
+}
+
+.metode-cell{
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+font-size:14px;
+
+}
+
+.metode-cell i{
+
+color:var(--red);
+
+font-size:16px;
+
+}
+
+/* ==========================
+RESPONSIVE
+========================== */
+
+@media(max-width:992px){
+
+.sidebar{
+
+width:90px;
+
+padding:18px;
+
+}
+
+.logo h3,
+.logo p,
+.sidebar-menu span,
+.logout span{
+
+display:none;
+
+}
+
+.main{
+
+margin-left:90px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.admin-toolbar{
+
+flex-direction:column;
+
+align-items:stretch;
+
+}
+
+.admin-search{
+
+max-width:100%;
+
+}
+
+.admin-filter select{
+
+width:100%;
+
+}
+
+}
+
+</style>
+
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <!-- LOGO -->
+
+    <div class="logo">
+
+        <div class="logo-icon">
+
+            🍱
+
+        </div>
+
+        <div>
+
+            <h3>DapurKost</h3>
+
+            <p>Admin Panel</p>
+
+        </div>
+
+    </div>
+
+    <!-- MENU -->
+
+    <div class="sidebar-menu">
+
+        <a href="dashboard-admin.html">
+
+            <i class="bi bi-grid-fill"></i>
+
+            <span>Dashboard</span>
+
+        </a>
+
+        <a href="kelola-menu.html">
+
+            <i class="bi bi-cup-hot"></i>
+
+            <span>Kelola Menu</span>
+
+        </a>
+
+        <a href="kelola-paket.html">
+
+            <i class="bi bi-box-seam"></i>
+
+            <span>Kelola Paket</span>
+
+        </a>
+
+        <a href="pesanan-admin.html">
+
+            <i class="bi bi-bag-check"></i>
+
+            <span>Pesanan</span>
+
+        </a>
+
+        <a href="pelanggan-admin.html">
+
+            <i class="bi bi-people-fill"></i>
+
+            <span>Pelanggan</span>
+
+        </a>
+
+        <a href="pembayaran-admin.html" class="active">
+
+            <i class="bi bi-credit-card-2-front"></i>
+
+            <span>Pembayaran</span>
+
+        </a>
+
+        <a href="laporan-admin.html">
+
+            <i class="bi bi-bar-chart-line"></i>
+
+            <span>Laporan</span>
+
+        </a>
+
+    </div>
+
+    <!-- LOGOUT -->
+
+    <div class="logout">
+
+        <a href="login-admin.html">
+
+            <i class="bi bi-box-arrow-right"></i>
+
+            <span>Logout</span>
+
+        </a>
+
+    </div>
+
+</div>
+
+<!-- ===========================
+MAIN CONTENT
+=========================== -->
+
+<div class="main">
+
+    <!-- TOPBAR -->
+
+    <div class="topbar">
+
+        <div>
+
+            <h2>
+
+                Kelola Pembayaran
+
+            </h2>
+
+            <p>
+
+                Verifikasi dan pantau seluruh transaksi pembayaran DapurKost.
+
+            </p>
+
+        </div>
+
+        <div class="admin-info">
+
+            <div class="notification">
+
+                <i class="bi bi-bell"></i>
+
+                <span class="badge-notif">
+
+                    3
+
+                </span>
+
+            </div>
+
+            <div class="avatar">
+
+                👨🏻‍🍳
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CARD RINGKASAN PEMBAYARAN -->
+
+    <div class="row g-4">
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="dashboard-card">
+
+                <div class="card-icon bg-red">
+
+                    <i class="bi bi-credit-card-2-front"></i>
+
+                </div>
+
+                <p>Total Pembayaran</p>
+
+                <h3>128</h3>
+
+                <small class="text-muted">
+
+                    Sepanjang Waktu
+
+                </small>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="dashboard-card">
+
+                <div class="card-icon bg-gold">
+
+                    <i class="bi bi-hourglass-split"></i>
+
+                </div>
+
+                <p>Menunggu Verifikasi</p>
+
+                <h3>9</h3>
+
+                <small class="text-muted">
+
+                    Perlu Ditinjau
+
+                </small>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="dashboard-card">
+
+                <div class="card-icon bg-green">
+
+                    <i class="bi bi-check-circle-fill"></i>
+
+                </div>
+
+                <p>Terverifikasi</p>
+
+                <h3>112</h3>
+
+                <small class="text-muted">
+
+                    Pembayaran Sah
+
+                </small>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="dashboard-card">
+
+                <div class="card-icon bg-blue">
+
+                    <i class="bi bi-x-circle-fill"></i>
+
+                </div>
+
+                <p>Ditolak</p>
+
+                <h3>7</h3>
+
+                <small class="text-muted">
+
+                    Bukti Tidak Valid
+
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- =======================
+    TABEL DATA PEMBAYARAN
+    ======================== -->
+
+    <div class="row mt-4">
+
+        <div class="col-12">
+
+            <div class="table-card">
+
+                <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+
+                    <h4 class="mb-0">Data Pembayaran</h4>
+
+                </div>
+
+                <!-- TOOLBAR: SEARCH + FILTER -->
+
+                <div class="admin-toolbar">
+
+                    <div class="admin-search">
+
+                        <i class="bi bi-search"></i>
+
+                        <input type="text" id="searchPembayaran" placeholder="Cari ID, nama pelanggan...">
+
+                    </div>
+
+                    <div class="admin-filter">
+
+                        <select id="filterStatus">
+
+                            <option value="semua">Semua Status</option>
+
+                            <option value="menunggu">Menunggu Verifikasi</option>
+
+                            <option value="terverifikasi">Terverifikasi</option>
+
+                            <option value="ditolak">Ditolak</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="admin-filter">
+
+                        <select id="filterMetode">
+
+                            <option value="semua">Semua Metode</option>
+
+                            <option value="transfer">Transfer Bank</option>
+
+                            <option value="qris">QRIS</option>
+
+                            <option value="cod">COD</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="table-responsive">
+
+                    <table class="table table-hover align-middle" id="tabelPembayaran">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>ID Pembayaran</th>
+                                <th>ID Pesanan</th>
+                                <th>Nama Pelanggan</th>
+                                <th>Metode</th>
+                                <th>Total</th>
+                                <th>Tanggal</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr data-status="menunggu" data-metode="transfer">
+
+                                <td>#PB001</td>
+
+                                <td>#DK001</td>
+
+                                <td>
+
+                                    <div class="nama-cell">
+
+                                        <div class="avatar-sm">S</div>
+
+                                        <strong>Salsa Billa</strong>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="metode-cell">
+
+                                        <i class="bi bi-bank"></i>
+
+                                        Transfer Bank
+
+                                    </div>
+
+                                </td>
+
+                                <td>Rp 140.000</td>
+
+                                <td>08 Jul 2026</td>
+
+                                <td>
+
+                                    <span class="badge bg-warning text-dark">Menunggu Verifikasi</span>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="action-btns">
+
+                                        <button class="btn btn-outline-dark" title="Detail">
+
+                                            <i class="bi bi-eye"></i>
+
+                                        </button>
+
+                                        <button class="btn btn-success" title="Verifikasi">
+
+                                            <i class="bi bi-check-circle"></i>
+
+                                        </button>
+
+                                        <button class="btn btn-danger" title="Hapus">
+
+                                            <i class="bi bi-trash"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                            <tr data-status="terverifikasi" data-metode="qris">
+
+                                <td>#PB002</td>
+
+                                <td>#DK002</td>
+
+                                <td>
+
+                                    <div class="nama-cell">
+
+                                        <div class="avatar-sm">R</div>
+
+                                        <strong>Rina Wulandari</strong>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="metode-cell">
+
+                                        <i class="bi bi-qr-code"></i>
+
+                                        QRIS
+
+                                    </div>
+
+                                </td>
+
+                                <td>Rp 450.000</td>
+
+                                <td>05 Jul 2026</td>
+
+                                <td>
+
+                                    <span class="badge bg-success">Terverifikasi</span>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="action-btns">
+
+                                        <button class="btn btn-outline-dark" title="Detail">
+
+                                            <i class="bi bi-eye"></i>
+
+                                        </button>
+
+                                        <button class="btn btn-danger" title="Hapus">
+
+                                            <i class="bi bi-trash"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                            <tr data-status="terverifikasi" data-metode="transfer">
+
+                                <td>#PB003</td>
+
+                                <td>#DK003</td>
+
+                                <td>
+
+                                    <div class="nama-cell">
+
+                                        <div class="avatar-sm">A</div>
+
+                                        <strong>Andi Pratama</strong>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="metode-cell">
+
+                                        <i class="bi bi-bank"></i>
+
+                                        Transfer Bank
+
+                                    </div>
+
+                                </td>
+
+                                <td>Rp 510.000</td>
+
+                                <td>04 Jul 2026</td>
+
+                                <td>
+
+                                    <span class="badge bg-success">Terverifikasi</span>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="action-btns">
+
+                                        <button class="btn btn-outline-dark" title="Detail">
+
+                                            <i class="bi bi-eye"></i>
+
+                                        </button>
+
+                                        <button class="btn btn-danger" title="Hapus">
+
+                                            <i class="bi bi-trash"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                            <tr data-status="ditolak" data-metode="cod">
+
+                                <td>#PB004</td>
+
+                                <td>#DK004</td>
+
+                                <td>
+
+                                    <div class="nama-cell">
+
+                                        <div class="avatar-sm">D</div>
+
+                                        <strong>Dewi Kartika</strong>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="metode-cell">
+
+                                        <i class="bi bi-cash-coin"></i>
+
+                                        COD
+
+                                    </div>
+
+                                </td>
+
+                                <td>Rp 119.000</td>
+
+                                <td>02 Jul 2026</td>
+
+                                <td>
+
+                                    <span class="badge bg-danger">Ditolak</span>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="action-btns">
+
+                                        <button class="btn btn-outline-dark" title="Detail">
+
+                                            <i class="bi bi-eye"></i>
+
+                                        </button>
+
+                                        <button class="btn btn-danger" title="Hapus">
+
+                                            <i class="bi bi-trash"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                            <tr data-status="menunggu" data-metode="qris">
+
+                                <td>#PB005</td>
+
+                                <td>#DK005</td>
+
+                                <td>
+
+                                    <div class="nama-cell">
+
+                                        <div class="avatar-sm">F</div>
+
+                                        <strong>Fadila Putri</strong>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="metode-cell">
+
+                                        <i class="bi bi-qr-code"></i>
+
+                                        QRIS
+
+                                    </div>
+
+                                </td>
+
+                                <td>Rp 140.000</td>
+
+                                <td>09 Jul 2026</td>
+
+                                <td>
+
+                                    <span class="badge bg-warning text-dark">Menunggu Verifikasi</span>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="action-btns">
+
+                                        <button class="btn btn-outline-dark" title="Detail">
+
+                                            <i class="bi bi-eye"></i>
+
+                                        </button>
+
+                                        <button class="btn btn-success" title="Verifikasi">
+
+                                            <i class="bi bi-check-circle"></i>
+
+                                        </button>
+
+                                        <button class="btn btn-danger" title="Hapus">
+
+                                            <i class="bi bi-trash"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                            <tr data-status="terverifikasi" data-metode="transfer">
+
+                                <td>#PB006</td>
+
+                                <td>#DK006</td>
+
+                                <td>
+
+                                    <div class="nama-cell">
+
+                                        <div class="avatar-sm">B</div>
+
+                                        <strong>Bagas Setiawan</strong>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="metode-cell">
+
+                                        <i class="bi bi-bank"></i>
+
+                                        Transfer Bank
+
+                                    </div>
+
+                                </td>
+
+                                <td>Rp 450.000</td>
+
+                                <td>28 Jun 2026</td>
+
+                                <td>
+
+                                    <span class="badge bg-success">Terverifikasi</span>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="action-btns">
+
+                                        <button class="btn btn-outline-dark" title="Detail">
+
+                                            <i class="bi bi-eye"></i>
+
+                                        </button>
+
+                                        <button class="btn btn-danger" title="Hapus">
+
+                                            <i class="bi bi-trash"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div id="emptyState" class="text-center py-4 text-muted d-none">
+
+                    <i class="bi bi-inbox fs-2 d-block mb-2"></i>
+
+                    Tidak ada pembayaran yang cocok dengan pencarian/filter.
+
+                </div>
+
+                <!-- PAGINASI -->
+
+                <nav class="mt-3">
+
+                    <ul class="pagination pagination-sm justify-content-end mb-0">
+
+                        <li class="page-item disabled">
+
+                            <a class="page-link" href="#">Sebelumnya</a>
+
+                        </li>
+
+                        <li class="page-item active">
+
+                            <a class="page-link" href="#">1</a>
+
+                        </li>
+
+                        <li class="page-item">
+
+                            <a class="page-link" href="#">2</a>
+
+                        </li>
+
+                        <li class="page-item">
+
+                            <a class="page-link" href="#">Berikutnya</a>
+
+                        </li>
+
+                    </ul>
+
+                </nav>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- =======================
+    FOOTER
+    ======================== -->
+
+    <footer class="text-center mt-5 text-muted">
+
+        © 2026 DapurKost Admin Panel
+
+    </footer>
+
+</div>
+
+<!-- MODAL DETAIL PEMBAYARAN -->
+<div class="modal fade" id="detailModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius:18px;">
+      <div class="modal-header">
+        <h5 class="modal-title">Detail Pembayaran</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex align-items-center gap-3 mb-3">
+          <div class="avatar-sm" id="detailAvatar" style="width:50px;height:50px;font-size:20px;"></div>
+          <div>
+            <h6 class="mb-0" id="detailNama"></h6>
+            <small class="text-muted" id="detailTanggal"></small>
+          </div>
+        </div>
+        <table class="table table-borderless mb-0">
+          <tr><td class="text-muted" style="width:150px;">ID Pembayaran</td><td id="detailIdPembayaran"></td></tr>
+          <tr><td class="text-muted">ID Pesanan</td><td id="detailIdPesanan"></td></tr>
+          <tr><td class="text-muted">Metode</td><td id="detailMetode"></td></tr>
+          <tr><td class="text-muted">Total</td><td id="detailTotal"></td></tr>
+          <tr><td class="text-muted">Status</td><td id="detailStatus"></td></tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+document.querySelector(".logout a").addEventListener("click", function(e){
+
+    if(!confirm("Yakin ingin logout?")){
+
+        e.preventDefault();
+
+    }
+
+});
+
+// Pencarian + filter status + filter metode (client-side, data dummy)
+const searchInput = document.getElementById("searchPembayaran");
+const filterStatus = document.getElementById("filterStatus");
+const filterMetode = document.getElementById("filterMetode");
+const tabel = document.getElementById("tabelPembayaran");
+const emptyState = document.getElementById("emptyState");
+
+function terapkanFilter(){
+
+    const kataKunci = searchInput.value.toLowerCase().trim();
+    const status = filterStatus.value;
+    const metode = filterMetode.value;
+    const baris = tabel.querySelectorAll("tbody tr");
+    let jumlahTampil = 0;
+
+    baris.forEach(function(tr){
+
+        const teks = tr.innerText.toLowerCase();
+        const statusBaris = tr.dataset.status;
+        const metodeBaris = tr.dataset.metode;
+
+        const cocokKataKunci = teks.includes(kataKunci);
+        const cocokStatus = (status === "semua") || (status === statusBaris);
+        const cocokMetode = (metode === "semua") || (metode === metodeBaris);
+
+        if(cocokKataKunci && cocokStatus && cocokMetode){
+
+            tr.style.display = "";
+            jumlahTampil++;
+
+        } else {
+
+            tr.style.display = "none";
+
+        }
+
+    });
+
+    emptyState.classList.toggle("d-none", jumlahTampil !== 0);
+
+}
+
+searchInput.addEventListener("input", terapkanFilter);
+filterStatus.addEventListener("change", terapkanFilter);
+filterMetode.addEventListener("change", terapkanFilter);
+
+/* ==================== AMBIL DATA DARI BARIS ==================== */
+function ambilDataBaris(tr){
+    return {
+        idPembayaran: tr.children[0].innerText.trim(),
+        idPesanan: tr.children[1].innerText.trim(),
+        nama: tr.querySelector(".nama-cell strong").innerText.trim(),
+        metode: tr.querySelector(".metode-cell").innerText.trim(),
+        total: tr.children[4].innerText.trim(),
+        tanggal: tr.children[5].innerText.trim(),
+        status: tr.dataset.status
+    };
+}
+
+function badgeStatus(status){
+    if(status === "terverifikasi") return '<span class="badge bg-success">Terverifikasi</span>';
+    if(status === "ditolak") return '<span class="badge bg-danger">Ditolak</span>';
+    return '<span class="badge bg-warning text-dark">Menunggu Verifikasi</span>';
+}
+
+/* ==================== DETAIL (ICON MATA) ==================== */
+const detailModal = new bootstrap.Modal(document.getElementById("detailModal"));
+
+tabel.addEventListener("click", function(e){
+    const btnDetail = e.target.closest('[title="Detail"]');
+    if(!btnDetail) return;
+
+    const tr = btnDetail.closest("tr");
+    const data = ambilDataBaris(tr);
+
+    document.getElementById("detailAvatar").textContent = data.nama.charAt(0);
+    document.getElementById("detailNama").textContent = data.nama;
+    document.getElementById("detailTanggal").textContent = data.tanggal;
+    document.getElementById("detailIdPembayaran").textContent = data.idPembayaran;
+    document.getElementById("detailIdPesanan").textContent = data.idPesanan;
+    document.getElementById("detailMetode").textContent = data.metode;
+    document.getElementById("detailTotal").textContent = data.total;
+    document.getElementById("detailStatus").innerHTML = badgeStatus(data.status);
+
+    detailModal.show();
+});
+
+/* ==================== VERIFIKASI (ICON CENTANG) ==================== */
+tabel.addEventListener("click", function(e){
+    const btnVerif = e.target.closest('[title="Verifikasi"]');
+    if(!btnVerif) return;
+
+    const tr = btnVerif.closest("tr");
+    const data = ambilDataBaris(tr);
+
+    if(!confirm(`Verifikasi pembayaran ${data.idPembayaran} dari ${data.nama}?`)) return;
+
+    tr.dataset.status = "terverifikasi";
+    tr.children[6].innerHTML = badgeStatus("terverifikasi");
+    btnVerif.remove();
+
+    terapkanFilter();
+});
+
+/* ==================== HAPUS ==================== */
+tabel.addEventListener("click", function(e){
+    const btnHapus = e.target.closest('[title="Hapus"]');
+    if(!btnHapus) return;
+
+    const tr = btnHapus.closest("tr");
+    const data = ambilDataBaris(tr);
+
+    if(confirm(`Yakin ingin menghapus data pembayaran ${data.idPembayaran} (${data.nama})?`)){
+        tr.remove();
+        terapkanFilter();
+    }
+});
+
+</script>
+
+</body>
+
+</html>

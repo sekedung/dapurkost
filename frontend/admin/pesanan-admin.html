@@ -1,0 +1,2107 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Kelola Pesanan | DapurKost</title>
+
+<!-- Google Font -->
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<!-- Bootstrap -->
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+rel="stylesheet">
+
+<!-- Bootstrap Icons -->
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+rel="stylesheet">
+
+<style>
+
+:root{
+
+--cream:#FEF9E1;
+--white:#FFFFFF;
+--red:#A31D1D;
+--dark:#6D2323;
+--gold:#E5D0AC;
+--text:#2B2B2B;
+--gray:#777;
+
+--shadow:
+0 10px 30px rgba(0,0,0,.08);
+
+}
+
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+
+}
+
+body{
+
+background:var(--cream);
+color:var(--text);
+
+}
+
+/* ==========================
+SIDEBAR
+========================== */
+
+.sidebar{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:230px;
+
+height:100vh;
+
+background:linear-gradient(
+180deg,
+var(--red),
+var(--dark));
+
+padding:18px 20px;
+
+color:white;
+
+display:flex;
+
+flex-direction:column;
+
+}
+
+.logo{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+margin-bottom:18px;
+
+}
+
+.logo-icon{
+
+width: 48px;
+height: 48px;
+
+border-radius:15px;
+
+background:rgba(255,255,255,.15);
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+font-size:24px;
+
+}
+
+.logo h3{
+
+margin:0;
+
+font-size:20px;
+
+font-weight:700;
+
+}
+
+.logo p{
+
+margin:0;
+
+opacity:.8;
+
+font-size:13px;
+
+}
+
+/* ==========================
+MENU
+========================== */
+
+.sidebar-menu{
+
+margin-top:0px;
+
+}
+
+.sidebar-menu a{
+
+display:flex;
+
+align-items:center;
+
+gap:14px;
+
+text-decoration:none;
+
+color:white;
+
+padding:15px 18px;
+
+border-radius:14px;
+
+margin-bottom:8px;
+
+transition:.25s;
+
+font-weight:500;
+
+}
+
+.sidebar-menu a:hover{
+
+background:rgba(255,255,255,.15);
+
+transform:translateX(5px);
+
+}
+
+.sidebar-menu .active{
+
+background:white;
+
+color:var(--red);
+
+font-weight:600;
+
+}
+
+.sidebar-menu i{
+
+font-size:16px;
+
+width:22px;
+
+}
+
+/* ==========================
+LOGOUT
+========================== */
+
+.logout{
+
+margin-top:auto;
+
+}
+
+.logout a{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+text-decoration:none;
+
+padding:15px 18px;
+
+border-radius:16px;
+
+background:rgba(255,255,255,.12);
+
+color:white;
+
+transition:.3s;
+
+}
+
+.logout a:hover{
+
+background:white;
+
+color:var(--red);
+
+}
+
+/* ==========================
+CONTENT
+========================== */
+
+.main{
+
+margin-left:230px;
+
+padding:24px 28px;
+
+}
+
+/* ==========================
+TOPBAR
+========================== */
+
+.topbar{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:35px;
+
+}
+
+.topbar h2{
+
+font-weight:700;
+
+font-size:34px;
+
+color:var(--dark);
+
+margin-bottom:5px;
+
+}
+
+.topbar p{
+
+margin:0;
+
+font-size:16px;
+
+color:var(--gray);
+
+}
+
+.admin-info{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+}
+
+.notification{
+
+position:relative;
+
+font-size:24px;
+
+cursor:pointer;
+
+}
+
+.badge-notif{
+
+position:absolute;
+
+top:-6px;
+right:-6px;
+
+background:#dc3545;
+
+color:white;
+
+font-size:11px;
+
+width:18px;
+height:18px;
+
+border-radius:50%;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+}
+
+.avatar{
+
+width:42px;
+height:42px;
+
+border-radius:50%;
+
+background:var(--gold);
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+font-size:24px;
+
+}
+
+/* ==========================
+CARD
+========================== */
+
+.dashboard-card{
+
+background:white;
+
+border:none;
+
+border-radius:18px;
+
+padding:18px;
+
+box-shadow:var(--shadow);
+
+transition:.25s;
+
+height:100%;
+
+}
+
+.dashboard-card:hover{
+
+transform:translateY(-4px);
+
+}
+
+.card-icon{
+
+width:52px;
+height:52px;
+
+border-radius:18px;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+font-size:22px;
+
+margin-bottom:14px;
+
+color:white;
+
+}
+
+.bg-red{
+
+background:var(--red);
+
+}
+
+.bg-gold{
+
+background:#D4A017;
+
+}
+
+.bg-green{
+
+background:#2E8B57;
+
+}
+
+.bg-blue{
+
+background:#3B82F6;
+
+}
+
+.dashboard-card h3{
+
+font-size:28px;
+
+font-weight:700;
+
+margin:4px 0;
+
+}
+
+.dashboard-card p{
+
+font-size:15px;
+margin:0;
+
+color:var(--gray);
+
+}
+
+.dashboard-card small{
+
+font-size:13px;
+
+}
+
+.table-card,
+.quick-card{
+
+margin-top:30px;
+
+background:white;
+
+border-radius:18px;
+
+padding:20px;
+
+box-shadow:var(--shadow);
+
+}
+
+.table-card h4,
+.quick-card h4{
+
+font-weight:700;
+
+font-size:22px;
+color:var(--dark);
+
+margin-bottom:20px;
+
+}
+.table th,
+.table td{
+
+padding:12px;
+
+font-size:14px;
+
+vertical-align:middle;
+
+}
+
+.quick-card .btn{
+
+padding:10px;
+
+font-size:15px;
+
+border-radius:12px;
+
+}
+
+/* ==========================
+KELOLA PESANAN — TAMBAHAN
+========================== */
+
+.pesanan-toolbar{
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+gap:12px;
+
+margin-bottom:20px;
+
+flex-wrap:wrap;
+
+}
+
+.pesanan-search{
+
+position:relative;
+
+flex:1;
+
+min-width:220px;
+
+max-width:320px;
+
+}
+
+.pesanan-search i{
+
+position:absolute;
+
+top:50%;
+
+left:14px;
+
+transform:translateY(-50%);
+
+color:var(--gray);
+
+font-size:14px;
+
+}
+
+.pesanan-search input{
+
+border-radius:12px;
+
+padding:10px 14px 10px 38px;
+
+border:1.5px solid #eee;
+
+font-size:14px;
+
+width:100%;
+
+}
+
+.pesanan-search input:focus{
+
+outline:none;
+
+border-color:var(--red);
+
+box-shadow:0 0 0 3px rgba(163,29,29,.08);
+
+}
+
+.pesanan-filter select{
+
+border-radius:12px;
+
+padding:10px 14px;
+
+border:1.5px solid #eee;
+
+font-size:14px;
+
+background:white;
+
+min-width:190px;
+
+}
+
+.pesanan-filter select:focus{
+
+outline:none;
+
+border-color:var(--red);
+
+}
+
+.pesanan-id{
+
+font-weight:700;
+
+color:var(--red);
+
+}
+
+.pelanggan-cell{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+}
+
+.avatar-sm{
+
+width:38px;
+height:38px;
+
+border-radius:50%;
+
+background:var(--cream);
+
+border:1.5px solid var(--gold);
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:16px;
+
+font-weight:600;
+
+color:var(--dark);
+
+flex-shrink:0;
+
+}
+
+.pelanggan-cell-text strong{
+
+display:block;
+
+font-size:14px;
+
+color:var(--text);
+
+}
+
+.pelanggan-cell-text small{
+
+color:var(--gray);
+
+font-size:12px;
+
+}
+
+.total-cell{
+
+font-weight:700;
+
+color:var(--red);
+
+}
+
+.action-btns{
+
+display:flex;
+
+gap:6px;
+
+flex-wrap:nowrap;
+
+}
+
+.action-btns .btn{
+
+border-radius:10px;
+
+padding:6px 12px;
+
+font-size:13px;
+
+}
+
+/* MODAL */
+
+.modal-content{
+
+border-radius:20px;
+
+border:none;
+
+}
+
+.detail-row{
+
+display:flex;
+
+justify-content:space-between;
+
+padding:10px 0;
+
+border-bottom:1px dashed #eee;
+
+font-size:14px;
+
+}
+
+.detail-row:last-child{
+
+border-bottom:none;
+
+}
+
+.detail-row span:first-child{
+
+color:var(--gray);
+
+}
+
+.detail-row span:last-child{
+
+font-weight:600;
+
+color:var(--text);
+
+text-align:right;
+
+}
+
+.menu-pill{
+
+display:inline-block;
+
+background:var(--cream);
+
+border:1px solid var(--gold);
+
+color:var(--dark);
+
+padding:6px 14px;
+
+border-radius:50px;
+
+font-size:13px;
+
+margin:4px 4px 0 0;
+
+}
+
+.total-highlight{
+
+background:linear-gradient(135deg, var(--red), var(--dark));
+
+color:white;
+
+border-radius:14px;
+
+padding:16px 18px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-top:14px;
+
+}
+
+.total-highlight span:last-child{
+
+font-size:20px;
+
+font-weight:700;
+
+}
+
+.status-option{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+padding:12px 14px;
+
+border:1.5px solid #eee;
+
+border-radius:14px;
+
+margin-bottom:10px;
+
+cursor:pointer;
+
+transition:.2s;
+
+}
+
+.status-option:hover{
+
+border-color:var(--red);
+
+}
+
+.status-option input[type="radio"]{
+
+accent-color:var(--red);
+
+width:16px;
+
+height:16px;
+
+}
+
+.status-option.selected{
+
+border-color:var(--red);
+
+background:#fff5f5;
+
+}
+
+/* ==========================
+RESPONSIVE
+========================== */
+
+@media(max-width:992px){
+
+.sidebar{
+
+width:90px;
+
+padding:18px;
+
+}
+
+.logo h3,
+.logo p,
+.sidebar-menu span,
+.logout span{
+
+display:none;
+
+}
+
+.main{
+
+margin-left:90px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.pesanan-toolbar{
+
+flex-direction:column;
+
+align-items:stretch;
+
+}
+
+.pesanan-search{
+
+max-width:100%;
+
+}
+
+.pesanan-filter select{
+
+width:100%;
+
+}
+
+}
+
+</style>
+
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <!-- LOGO -->
+
+    <div class="logo">
+
+        <div class="logo-icon">
+
+            🍱
+
+        </div>
+
+        <div>
+
+            <h3>DapurKost</h3>
+
+            <p>Admin Panel</p>
+
+        </div>
+
+    </div>
+
+    <!-- MENU -->
+
+    <div class="sidebar-menu">
+
+        <a href="dashboard-admin.html">
+
+            <i class="bi bi-grid-fill"></i>
+
+            <span>Dashboard</span>
+
+        </a>
+
+        <a href="kelola-menu.html">
+
+            <i class="bi bi-cup-hot"></i>
+
+            <span>Kelola Menu</span>
+
+        </a>
+
+        <a href="kelola-paket.html">
+
+            <i class="bi bi-box-seam"></i>
+
+            <span>Kelola Paket</span>
+
+        </a>
+
+        <a href="pesanan-admin.html" class="active">
+
+            <i class="bi bi-bag-check"></i>
+
+            <span>Pesanan</span>
+
+        </a>
+
+        <a href="pelanggan-admin.html">
+
+            <i class="bi bi-people-fill"></i>
+
+            <span>Pelanggan</span>
+
+        </a>
+
+        <a href="pembayaran-admin.html">
+
+            <i class="bi bi-credit-card-2-front"></i>
+
+            <span>Pembayaran</span>
+
+        </a>
+
+        <a href="laporan-admin.html">
+
+            <i class="bi bi-bar-chart-line"></i>
+
+            <span>Laporan</span>
+
+        </a>
+
+    </div>
+
+    <!-- LOGOUT -->
+
+    <div class="logout">
+
+        <a href="login-admin.html">
+
+            <i class="bi bi-box-arrow-right"></i>
+
+            <span>Logout</span>
+
+        </a>
+
+    </div>
+
+</div>
+
+<!-- ===========================
+MAIN CONTENT
+=========================== -->
+
+<div class="main">
+
+    <!-- TOPBAR -->
+
+    <div class="topbar">
+
+        <div>
+
+            <h2>
+
+                Kelola Pesanan
+
+            </h2>
+
+            <p>
+
+                Pantau, tinjau, dan perbarui status seluruh pesanan pelanggan DapurKost.
+
+            </p>
+
+        </div>
+
+        <div class="admin-info">
+
+            <div class="notification">
+
+                <i class="bi bi-bell"></i>
+
+                <span class="badge-notif">
+
+                    5
+
+                </span>
+
+            </div>
+
+            <div class="avatar">
+
+                👨🏻‍🍳
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CARD RINGKASAN PESANAN -->
+
+    <div class="row g-4">
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="dashboard-card">
+
+                <div class="card-icon bg-red">
+
+                    <i class="bi bi-cart-check-fill"></i>
+
+                </div>
+
+                <p>Total Pesanan</p>
+
+                <h3>152</h3>
+
+                <small class="text-muted">
+
+                    Sepanjang Waktu
+
+                </small>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="dashboard-card">
+
+                <div class="card-icon bg-gold">
+
+                    <i class="bi bi-hourglass-split"></i>
+
+                </div>
+
+                <p>Menunggu Konfirmasi</p>
+
+                <h3>9</h3>
+
+                <small class="text-muted">
+
+                    Perlu Ditinjau
+
+                </small>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="dashboard-card">
+
+                <div class="card-icon bg-blue">
+
+                    <i class="bi bi-truck"></i>
+
+                </div>
+
+                <p>Sedang Dikirim</p>
+
+                <h3>14</h3>
+
+                <small class="text-muted">
+
+                    Dalam Pengiriman
+
+                </small>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="dashboard-card">
+
+                <div class="card-icon bg-green">
+
+                    <i class="bi bi-check-circle-fill"></i>
+
+                </div>
+
+                <p>Pesanan Selesai</p>
+
+                <h3>129</h3>
+
+                <small class="text-muted">
+
+                    Bulan Ini
+
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- =======================
+    TABEL DAFTAR PESANAN
+    ======================== -->
+
+    <div class="row mt-4">
+
+        <div class="col-12">
+
+            <div class="table-card">
+
+                <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+
+                    <h4 class="mb-0">Daftar Pesanan</h4>
+
+                </div>
+
+                <!-- TOOLBAR: SEARCH + FILTER -->
+
+                <div class="pesanan-toolbar">
+
+                    <div class="pesanan-search">
+
+                        <i class="bi bi-search"></i>
+
+                        <input type="text" id="searchPesanan" placeholder="Cari ID pesanan atau nama pelanggan...">
+
+                    </div>
+
+                    <div class="pesanan-filter">
+
+                        <select id="filterStatus">
+
+                            <option value="semua">Semua Status</option>
+
+                            <option value="menunggu">Menunggu Konfirmasi</option>
+
+                            <option value="diproses">Diproses</option>
+
+                            <option value="dikirim">Dikirim</option>
+
+                            <option value="selesai">Selesai</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="table-responsive">
+
+                    <table class="table table-hover align-middle" id="tabelPesanan">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>ID Pesanan</th>
+                                <th>Pelanggan</th>
+                                <th>Paket</th>
+                                <th>Tanggal</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr data-status="menunggu"
+                                data-id="DK101"
+                                data-nama="Salsa Billa"
+                                data-paket="Paket Mingguan"
+                                data-tanggal="09 Jul 2026"
+                                data-alamat="Kost Melati, Jl. Kaliurang No. 12"
+                                data-hp="0812-3456-7890"
+                                data-menu="Nasi Ayam Geprek, Es Teh Manis, Tempe Goreng"
+                                data-total="150000">
+
+                                <td><span class="pesanan-id">#DK101</span></td>
+
+                                <td>
+
+                                    <div class="pelanggan-cell">
+
+                                        <div class="avatar-sm">S</div>
+
+                                        <div class="pelanggan-cell-text">
+
+                                            <strong>Salsa Billa</strong>
+
+                                            <small>salsa.billa@gmail.com</small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+                                <td>Paket Mingguan</td>
+
+                                <td>09 Jul 2026</td>
+
+                                <td class="total-cell">Rp 150.000</td>
+
+                                <td>
+
+                                    <span class="badge bg-warning text-dark">Menunggu</span>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="action-btns">
+
+                                        <button class="btn btn-outline-dark" title="Detail" data-bs-toggle="modal" data-bs-target="#detailModal" onclick="tampilkanDetail(this)">
+
+                                            <i class="bi bi-eye"></i>
+
+                                        </button>
+
+                                        <button class="btn btn-danger" title="Update Status" data-bs-toggle="modal" data-bs-target="#statusModal" onclick="bukaUpdateStatus(this)">
+
+                                            <i class="bi bi-arrow-repeat"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                            <tr data-status="diproses"
+                                data-id="DK102"
+                                data-nama="Rina Wulandari"
+                                data-paket="Paket Bulanan"
+                                data-tanggal="08 Jul 2026"
+                                data-alamat="Kost Anggrek, Jl. Affandi No. 7"
+                                data-hp="0813-2211-4455"
+                                data-menu="Nasi Goreng Spesial, Ayam Bakar, Sayur Asem"
+                                data-total="550000">
+
+                                <td><span class="pesanan-id">#DK102</span></td>
+
+                                <td>
+
+                                    <div class="pelanggan-cell">
+
+                                        <div class="avatar-sm">R</div>
+
+                                        <div class="pelanggan-cell-text">
+
+                                            <strong>Rina Wulandari</strong>
+
+                                            <small>rina.wulan@gmail.com</small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+                                <td>Paket Bulanan</td>
+
+                                <td>08 Jul 2026</td>
+
+                                <td class="total-cell">Rp 550.000</td>
+
+                                <td>
+
+                                    <span class="badge bg-primary">Diproses</span>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="action-btns">
+
+                                        <button class="btn btn-outline-dark" title="Detail" data-bs-toggle="modal" data-bs-target="#detailModal" onclick="tampilkanDetail(this)">
+
+                                            <i class="bi bi-eye"></i>
+
+                                        </button>
+
+                                        <button class="btn btn-danger" title="Update Status" data-bs-toggle="modal" data-bs-target="#statusModal" onclick="bukaUpdateStatus(this)">
+
+                                            <i class="bi bi-arrow-repeat"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                            <tr data-status="dikirim"
+                                data-id="DK103"
+                                data-nama="Andi Pratama"
+                                data-paket="Paket Harian"
+                                data-tanggal="07 Jul 2026"
+                                data-alamat="Kost Melati, Jl. Kaliurang No. 12"
+                                data-hp="0857-6633-2210"
+                                data-menu="Nasi Ayam Geprek, Es Teh Manis"
+                                data-total="25000">
+
+                                <td><span class="pesanan-id">#DK103</span></td>
+
+                                <td>
+
+                                    <div class="pelanggan-cell">
+
+                                        <div class="avatar-sm">A</div>
+
+                                        <div class="pelanggan-cell-text">
+
+                                            <strong>Andi Pratama</strong>
+
+                                            <small>andi.pratama@gmail.com</small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+                                <td>Paket Harian</td>
+
+                                <td>07 Jul 2026</td>
+
+                                <td class="total-cell">Rp 25.000</td>
+
+                                <td>
+
+                                    <span class="badge bg-info text-dark">Dikirim</span>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="action-btns">
+
+                                        <button class="btn btn-outline-dark" title="Detail" data-bs-toggle="modal" data-bs-target="#detailModal" onclick="tampilkanDetail(this)">
+
+                                            <i class="bi bi-eye"></i>
+
+                                        </button>
+
+                                        <button class="btn btn-danger" title="Update Status" data-bs-toggle="modal" data-bs-target="#statusModal" onclick="bukaUpdateStatus(this)">
+
+                                            <i class="bi bi-arrow-repeat"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                            <tr data-status="selesai"
+                                data-id="DK104"
+                                data-nama="Dewi Kartika"
+                                data-paket="Paket Mingguan"
+                                data-tanggal="05 Jul 2026"
+                                data-alamat="Kost Mawar, Jl. Gejayan No. 21"
+                                data-hp="0821-9988-0011"
+                                data-menu="Nasi Ayam Geprek, Capcay, Es Teh Manis"
+                                data-total="150000">
+
+                                <td><span class="pesanan-id">#DK104</span></td>
+
+                                <td>
+
+                                    <div class="pelanggan-cell">
+
+                                        <div class="avatar-sm">D</div>
+
+                                        <div class="pelanggan-cell-text">
+
+                                            <strong>Dewi Kartika</strong>
+
+                                            <small>dewi.kartika@gmail.com</small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+                                <td>Paket Mingguan</td>
+
+                                <td>05 Jul 2026</td>
+
+                                <td class="total-cell">Rp 150.000</td>
+
+                                <td>
+
+                                    <span class="badge bg-success">Selesai</span>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="action-btns">
+
+                                        <button class="btn btn-outline-dark" title="Detail" data-bs-toggle="modal" data-bs-target="#detailModal" onclick="tampilkanDetail(this)">
+
+                                            <i class="bi bi-eye"></i>
+
+                                        </button>
+
+                                        <button class="btn btn-danger" title="Update Status" data-bs-toggle="modal" data-bs-target="#statusModal" onclick="bukaUpdateStatus(this)">
+
+                                            <i class="bi bi-arrow-repeat"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                            <tr data-status="menunggu"
+                                data-id="DK105"
+                                data-nama="Fadila Putri"
+                                data-paket="Paket Harian"
+                                data-tanggal="09 Jul 2026"
+                                data-alamat="Kost Melati, Jl. Kaliurang No. 12"
+                                data-hp="0895-4477-6620"
+                                data-menu="Nasi Goreng Spesial, Es Teh Manis"
+                                data-total="23000">
+
+                                <td><span class="pesanan-id">#DK105</span></td>
+
+                                <td>
+
+                                    <div class="pelanggan-cell">
+
+                                        <div class="avatar-sm">F</div>
+
+                                        <div class="pelanggan-cell-text">
+
+                                            <strong>Fadila Putri</strong>
+
+                                            <small>fadila.putri@gmail.com</small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+                                <td>Paket Harian</td>
+
+                                <td>09 Jul 2026</td>
+
+                                <td class="total-cell">Rp 23.000</td>
+
+                                <td>
+
+                                    <span class="badge bg-warning text-dark">Menunggu</span>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="action-btns">
+
+                                        <button class="btn btn-outline-dark" title="Detail" data-bs-toggle="modal" data-bs-target="#detailModal" onclick="tampilkanDetail(this)">
+
+                                            <i class="bi bi-eye"></i>
+
+                                        </button>
+
+                                        <button class="btn btn-danger" title="Update Status" data-bs-toggle="modal" data-bs-target="#statusModal" onclick="bukaUpdateStatus(this)">
+
+                                            <i class="bi bi-arrow-repeat"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                            <tr data-status="diproses"
+                                data-id="DK106"
+                                data-nama="Bagas Setiawan"
+                                data-paket="Paket Bulanan"
+                                data-tanggal="03 Jul 2026"
+                                data-alamat="Kost Anggrek, Jl. Affandi No. 7"
+                                data-hp="0838-1122-9900"
+                                data-menu="Ayam Bakar, Sayur Asem, Tempe Goreng, Es Teh Manis"
+                                data-total="550000">
+
+                                <td><span class="pesanan-id">#DK106</span></td>
+
+                                <td>
+
+                                    <div class="pelanggan-cell">
+
+                                        <div class="avatar-sm">B</div>
+
+                                        <div class="pelanggan-cell-text">
+
+                                            <strong>Bagas Setiawan</strong>
+
+                                            <small>bagas.setiawan@gmail.com</small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+                                <td>Paket Bulanan</td>
+
+                                <td>03 Jul 2026</td>
+
+                                <td class="total-cell">Rp 550.000</td>
+
+                                <td>
+
+                                    <span class="badge bg-primary">Diproses</span>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="action-btns">
+
+                                        <button class="btn btn-outline-dark" title="Detail" data-bs-toggle="modal" data-bs-target="#detailModal" onclick="tampilkanDetail(this)">
+
+                                            <i class="bi bi-eye"></i>
+
+                                        </button>
+
+                                        <button class="btn btn-danger" title="Update Status" data-bs-toggle="modal" data-bs-target="#statusModal" onclick="bukaUpdateStatus(this)">
+
+                                            <i class="bi bi-arrow-repeat"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                            <tr data-status="selesai"
+                                data-id="DK107"
+                                data-nama="Salsa Billa"
+                                data-paket="Paket Harian"
+                                data-tanggal="01 Jul 2026"
+                                data-alamat="Kost Melati, Jl. Kaliurang No. 12"
+                                data-hp="0812-3456-7890"
+                                data-menu="Nasi Ayam Geprek, Capcay"
+                                data-total="27000">
+
+                                <td><span class="pesanan-id">#DK107</span></td>
+
+                                <td>
+
+                                    <div class="pelanggan-cell">
+
+                                        <div class="avatar-sm">S</div>
+
+                                        <div class="pelanggan-cell-text">
+
+                                            <strong>Salsa Billa</strong>
+
+                                            <small>salsa.billa@gmail.com</small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+                                <td>Paket Harian</td>
+
+                                <td>01 Jul 2026</td>
+
+                                <td class="total-cell">Rp 27.000</td>
+
+                                <td>
+
+                                    <span class="badge bg-success">Selesai</span>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="action-btns">
+
+                                        <button class="btn btn-outline-dark" title="Detail" data-bs-toggle="modal" data-bs-target="#detailModal" onclick="tampilkanDetail(this)">
+
+                                            <i class="bi bi-eye"></i>
+
+                                        </button>
+
+                                        <button class="btn btn-danger" title="Update Status" data-bs-toggle="modal" data-bs-target="#statusModal" onclick="bukaUpdateStatus(this)">
+
+                                            <i class="bi bi-arrow-repeat"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                            <tr data-status="dikirim"
+                                data-id="DK108"
+                                data-nama="Andi Pratama"
+                                data-paket="Paket Mingguan"
+                                data-tanggal="30 Jun 2026"
+                                data-alamat="Kost Melati, Jl. Kaliurang No. 12"
+                                data-hp="0857-6633-2210"
+                                data-menu="Nasi Goreng Spesial, Ayam Bakar, Es Teh Manis"
+                                data-total="150000">
+
+                                <td><span class="pesanan-id">#DK108</span></td>
+
+                                <td>
+
+                                    <div class="pelanggan-cell">
+
+                                        <div class="avatar-sm">A</div>
+
+                                        <div class="pelanggan-cell-text">
+
+                                            <strong>Andi Pratama</strong>
+
+                                            <small>andi.pratama@gmail.com</small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+                                <td>Paket Mingguan</td>
+
+                                <td>30 Jun 2026</td>
+
+                                <td class="total-cell">Rp 150.000</td>
+
+                                <td>
+
+                                    <span class="badge bg-info text-dark">Dikirim</span>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="action-btns">
+
+                                        <button class="btn btn-outline-dark" title="Detail" data-bs-toggle="modal" data-bs-target="#detailModal" onclick="tampilkanDetail(this)">
+
+                                            <i class="bi bi-eye"></i>
+
+                                        </button>
+
+                                        <button class="btn btn-danger" title="Update Status" data-bs-toggle="modal" data-bs-target="#statusModal" onclick="bukaUpdateStatus(this)">
+
+                                            <i class="bi bi-arrow-repeat"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div id="emptyState" class="text-center py-4 text-muted d-none">
+
+                    <i class="bi bi-inbox fs-2 d-block mb-2"></i>
+
+                    Tidak ada pesanan yang cocok dengan pencarian/filter.
+
+                </div>
+
+                <!-- PAGINASI -->
+
+                <nav class="mt-3">
+
+                    <ul class="pagination pagination-sm justify-content-end mb-0">
+
+                        <li class="page-item disabled">
+
+                            <a class="page-link" href="#">Sebelumnya</a>
+
+                        </li>
+
+                        <li class="page-item active">
+
+                            <a class="page-link" href="#">1</a>
+
+                        </li>
+
+                        <li class="page-item">
+
+                            <a class="page-link" href="#">2</a>
+
+                        </li>
+
+                        <li class="page-item">
+
+                            <a class="page-link" href="#">Berikutnya</a>
+
+                        </li>
+
+                    </ul>
+
+                </nav>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- =======================
+    FOOTER
+    ======================== -->
+
+    <footer class="text-center mt-5 text-muted">
+
+        © 2026 DapurKost Admin Panel
+
+    </footer>
+
+</div>
+
+<!-- ===========================
+MODAL DETAIL PESANAN
+=========================== -->
+
+<div class="modal fade" id="detailModal" tabindex="-1">
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content">
+
+            <div class="modal-header border-0 pb-0">
+
+                <h5 class="mb-0">Detail Pesanan <span id="detailId" class="text-danger"></span></h5>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+            </div>
+
+            <div class="modal-body pt-2">
+
+                <div class="detail-row">
+                    <span>Nama Pelanggan</span>
+                    <span id="detailNama">-</span>
+                </div>
+
+                <div class="detail-row">
+                    <span>Paket</span>
+                    <span id="detailPaket">-</span>
+                </div>
+
+                <div class="detail-row">
+                    <span>Tanggal Pesan</span>
+                    <span id="detailTanggal">-</span>
+                </div>
+
+                <div class="detail-row">
+                    <span>No. HP</span>
+                    <span id="detailHp">-</span>
+                </div>
+
+                <div class="detail-row">
+                    <span>Alamat Antar</span>
+                    <span id="detailAlamat">-</span>
+                </div>
+
+                <div class="mt-3">
+
+                    <p class="mb-2 text-muted" style="font-size:14px;">Menu Dipesan</p>
+
+                    <div id="detailMenu"></div>
+
+                </div>
+
+                <div class="total-highlight">
+                    <span>Total Pembayaran</span>
+                    <span id="detailTotal">Rp 0</span>
+                </div>
+
+            </div>
+
+            <div class="modal-footer border-0 pt-0">
+
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ===========================
+MODAL UPDATE STATUS
+=========================== -->
+
+<div class="modal fade" id="statusModal" tabindex="-1">
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content">
+
+            <div class="modal-header border-0 pb-0">
+
+                <h5 class="mb-0">Update Status <span id="statusId" class="text-danger"></span></h5>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+            </div>
+
+            <div class="modal-body pt-2">
+
+                <p class="text-muted mb-3" style="font-size:14px;">
+                    Pilih status terbaru untuk pesanan atas nama <strong id="statusNama">-</strong>.
+                </p>
+
+                <label class="status-option" data-value="menunggu">
+                    <input type="radio" name="statusBaru" value="menunggu">
+                    <div>
+                        <strong>Menunggu Konfirmasi</strong>
+                        <div class="text-muted" style="font-size:12px;">Pesanan baru masuk, belum ditinjau.</div>
+                    </div>
+                </label>
+
+                <label class="status-option" data-value="diproses">
+                    <input type="radio" name="statusBaru" value="diproses">
+                    <div>
+                        <strong>Diproses</strong>
+                        <div class="text-muted" style="font-size:12px;">Pesanan sedang disiapkan di dapur.</div>
+                    </div>
+                </label>
+
+                <label class="status-option" data-value="dikirim">
+                    <input type="radio" name="statusBaru" value="dikirim">
+                    <div>
+                        <strong>Dikirim</strong>
+                        <div class="text-muted" style="font-size:12px;">Pesanan dalam perjalanan ke pelanggan.</div>
+                    </div>
+                </label>
+
+                <label class="status-option" data-value="selesai">
+                    <input type="radio" name="statusBaru" value="selesai">
+                    <div>
+                        <strong>Selesai</strong>
+                        <div class="text-muted" style="font-size:12px;">Pesanan telah diterima pelanggan.</div>
+                    </div>
+                </label>
+
+                <div class="mt-3">
+
+                    <label class="form-label text-muted" style="font-size:13px;">Catatan (opsional)</label>
+
+                    <textarea class="form-control" id="statusCatatan" rows="2" placeholder="Contoh: pengiriman tertunda 15 menit"></textarea>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer border-0 pt-0">
+
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+
+                <button type="button" class="btn btn-danger" onclick="simpanStatus()">Simpan Perubahan</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Bootstrap JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+document.querySelector(".logout a").addEventListener("click", function(e){
+
+    if(!confirm("Yakin ingin logout?")){
+
+        e.preventDefault();
+
+    }
+
+});
+
+// Pencarian + filter status (client-side, data dummy)
+const searchInput = document.getElementById("searchPesanan");
+const filterStatus = document.getElementById("filterStatus");
+const tabel = document.getElementById("tabelPesanan");
+const emptyState = document.getElementById("emptyState");
+
+function terapkanFilter(){
+
+    const kataKunci = searchInput.value.toLowerCase().trim();
+    const status = filterStatus.value;
+    const baris = tabel.querySelectorAll("tbody tr");
+    let jumlahTampil = 0;
+
+    baris.forEach(function(tr){
+
+        const teks = tr.innerText.toLowerCase();
+        const statusBaris = tr.dataset.status;
+
+        const cocokKataKunci = teks.includes(kataKunci);
+        const cocokStatus = (status === "semua") || (status === statusBaris);
+
+        if(cocokKataKunci && cocokStatus){
+
+            tr.style.display = "";
+            jumlahTampil++;
+
+        } else {
+
+            tr.style.display = "none";
+
+        }
+
+    });
+
+    emptyState.classList.toggle("d-none", jumlahTampil !== 0);
+
+}
+
+searchInput.addEventListener("input", terapkanFilter);
+filterStatus.addEventListener("change", terapkanFilter);
+
+// Badge status mapping
+const statusInfo = {
+    menunggu: { label: "Menunggu", kelas: "bg-warning text-dark" },
+    diproses: { label: "Diproses", kelas: "bg-primary" },
+    dikirim:  { label: "Dikirim",  kelas: "bg-info text-dark" },
+    selesai:  { label: "Selesai",  kelas: "bg-success" }
+};
+
+function formatRupiah(angka){
+    return "Rp " + Number(angka).toLocaleString("id-ID");
+}
+
+// MODAL DETAIL
+let barisAktif = null;
+
+function tampilkanDetail(btn){
+
+    const tr = btn.closest("tr");
+
+    document.getElementById("detailId").innerText = "#" + tr.dataset.id;
+    document.getElementById("detailNama").innerText = tr.dataset.nama;
+    document.getElementById("detailPaket").innerText = tr.dataset.paket;
+    document.getElementById("detailTanggal").innerText = tr.dataset.tanggal;
+    document.getElementById("detailHp").innerText = tr.dataset.hp;
+    document.getElementById("detailAlamat").innerText = tr.dataset.alamat;
+    document.getElementById("detailTotal").innerText = formatRupiah(tr.dataset.total);
+
+    const menuWrap = document.getElementById("detailMenu");
+    menuWrap.innerHTML = "";
+
+    tr.dataset.menu.split(",").forEach(function(item){
+        const pill = document.createElement("span");
+        pill.className = "menu-pill";
+        pill.innerText = item.trim();
+        menuWrap.appendChild(pill);
+    });
+
+}
+
+// MODAL UPDATE STATUS
+function bukaUpdateStatus(btn){
+
+    const tr = btn.closest("tr");
+    barisAktif = tr;
+
+    document.getElementById("statusId").innerText = "#" + tr.dataset.id;
+    document.getElementById("statusNama").innerText = tr.dataset.nama;
+    document.getElementById("statusCatatan").value = "";
+
+    document.querySelectorAll(".status-option").forEach(function(opt){
+        opt.classList.remove("selected");
+        const radio = opt.querySelector("input[type='radio']");
+        radio.checked = (opt.dataset.value === tr.dataset.status);
+        if(radio.checked){
+            opt.classList.add("selected");
+        }
+    });
+
+}
+
+document.querySelectorAll(".status-option").forEach(function(opt){
+
+    opt.addEventListener("click", function(){
+        document.querySelectorAll(".status-option").forEach(o => o.classList.remove("selected"));
+        opt.classList.add("selected");
+        opt.querySelector("input[type='radio']").checked = true;
+    });
+
+});
+
+function simpanStatus(){
+
+    if(!barisAktif){
+        return;
+    }
+
+    const dipilih = document.querySelector(".status-option input[name='statusBaru']:checked");
+
+    if(!dipilih){
+        alert("Silakan pilih status terlebih dahulu.");
+        return;
+    }
+
+    const statusBaru = dipilih.value;
+    const info = statusInfo[statusBaru];
+
+    barisAktif.dataset.status = statusBaru;
+
+    const badgeCell = barisAktif.querySelector("td:nth-child(6) .badge");
+    badgeCell.className = "badge " + info.kelas;
+    badgeCell.innerText = info.label;
+
+    const modalEl = document.getElementById("statusModal");
+    const modalInstance = bootstrap.Modal.getInstance(modalEl);
+    modalInstance.hide();
+
+    terapkanFilter();
+
+}
+
+</script>
+
+</body>
+
+</html>

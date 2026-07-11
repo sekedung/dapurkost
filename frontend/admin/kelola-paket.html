@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kelola Paket | DapurKost</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+:root{
+  --cream:#FEF9E1;
+  --white:#FFFFFF;
+  --red:#A31D1D;
+  --dark:#6D2323;
+  --gold:#dfd8cb;
+  --text:#2B2B2B;
+  --gray:#777;
+  --shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+*{ margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+body{ background:var(--cream); color:var(--text); }
+
+/* ========== SIDEBAR ========== */
+.sidebar{
+  position:fixed; top:0; left:0; width:230px; height:100vh;
+  background:linear-gradient(180deg,var(--red),var(--dark));
+  padding:18px 20px; color:white; display:flex; flex-direction:column;
+}
+.logo{ display:flex; align-items:center; gap:12px; margin-bottom:18px; }
+.logo-icon{ width:48px; height:48px; border-radius:15px; background:rgba(255,255,255,.15);
+  display:flex; justify-content:center; align-items:center; font-size:24px; }
+.logo h3{ margin:0; font-size:20px; font-weight:700; }
+.logo p{ margin:0; opacity:.8; font-size:13px; }
+.sidebar-menu{ margin-top:0px; }
+.sidebar-menu a{
+  display:flex; align-items:center; gap:14px; text-decoration:none; color:white;
+  padding:15px 18px; border-radius:14px; margin-bottom:8px; transition:.25s; font-weight:500;
+}
+.sidebar-menu a:hover{ background:rgba(255,255,255,.15); transform:translateX(5px); }
+.sidebar-menu .active{ background:white; color:var(--red); font-weight:600; }
+.sidebar-menu i{ font-size:16px; width:22px; }
+.logout{ margin-top:auto; }
+.logout a{
+  display:flex; align-items:center; gap:12px; text-decoration:none; padding:15px 18px;
+  border-radius:16px; background:rgba(255,255,255,.12); color:white; transition:.3s;
+}
+.logout a:hover{ background:white; color:var(--red); }
+
+/* ========== CONTENT ========== */
+.main{ margin-left:230px; padding:24px 28px; }
+
+/* ========== TOPBAR ========== */
+.topbar{ display:flex; justify-content:space-between; align-items:center; margin-bottom:35px; flex-wrap:wrap; gap:15px; }
+.topbar h2{ font-weight:700; font-size:34px; color:var(--dark); margin-bottom:5px; }
+.topbar p{ margin:0; font-size:16px; color:var(--gray); }
+.admin-info{ display:flex; align-items:center; gap:15px; }
+.notification{ position:relative; font-size:24px; cursor:pointer; }
+.badge-notif{
+  position:absolute; top:-6px; right:-6px; background:#dc3545; color:white; font-size:11px;
+  width:18px; height:18px; border-radius:50%; display:flex; justify-content:center; align-items:center;
+}
+.avatar{
+  width:42px; height:42px; border-radius:50%; background:var(--gold);
+  display:flex; justify-content:center; align-items:center; font-size:24px;
+}
+
+.toolbar-card{
+  background:white; border-radius:18px; padding:16px 20px; box-shadow:var(--shadow);
+  margin-bottom:25px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
+}
+.toolbar-card p{ margin:0; color:var(--gray); font-size:14px; }
+
+/* ========== PAKET CARD ========== */
+.paket-card{
+  background:white; border-radius:20px; box-shadow:var(--shadow); padding:28px 24px;
+  height:100%; position:relative; transition:.25s; border:2px solid transparent;
+}
+.paket-card:hover{ transform:translateY(-4px); }
+.paket-card.populer{ border-color:var(--red); }
+.paket-card.hemat{ border-color:#D4A017; }
+
+.paket-badge{
+  position:absolute; top:-14px; left:24px; font-size:12px; font-weight:600;
+  padding:6px 14px; border-radius:20px; color:white; display:flex; align-items:center; gap:5px;
+}
+.paket-badge.populer{ background:var(--red); }
+.paket-badge.hemat{ background:#D4A017; }
+
+.paket-icon{
+  width:56px; height:56px; border-radius:16px; background:var(--gold); color:var(--red);
+  display:flex; justify-content:center; align-items:center; font-size:26px; margin-bottom:16px;
+}
+.paket-card h4{ font-size:20px; font-weight:700; color:var(--dark); margin-bottom:4px; }
+.paket-price{ font-size:28px; font-weight:700; color:var(--red); }
+.paket-period{ font-size:13px; color:var(--gray); display:block; margin-bottom:16px; }
+
+.paket-info-row{
+  display:flex; justify-content:space-between; font-size:13px; padding:8px 0;
+  border-bottom:1px dashed #eee; color:var(--text);
+}
+.paket-info-row span:first-child{ color:var(--gray); display:flex; align-items:center; gap:6px; }
+.paket-info-row span:last-child{ font-weight:600; }
+
+.paket-benefit-list{ list-style:none; margin:14px 0; padding:0; }
+.paket-benefit-list li{ font-size:13px; margin-bottom:8px; display:flex; align-items:flex-start; gap:8px; color:var(--text); }
+.paket-benefit-list li i{ color:#2E8B57; margin-top:2px; }
+
+.paket-extra{ display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; margin-bottom:16px; }
+.paket-extra .tag{ font-size:11px; padding:5px 10px; border-radius:20px; font-weight:600; }
+.tag-yes{ background:#e8f5ec; color:#2E8B57; }
+.tag-no{ background:#fbe9e9; color:#A31D1D; }
+
+.paket-actions{ display:flex; gap:8px; }
+.paket-actions .btn{ flex:1; font-size:13px; border-radius:10px; padding:8px; }
+
+/* ========== TABLE ========== */
+.table-card{
+  margin-top:10px; background:white; border-radius:18px; padding:20px; box-shadow:var(--shadow);
+}
+.table-card h4{ font-weight:700; font-size:22px; color:var(--dark); margin-bottom:20px; }
+.table th, .table td{ padding:12px; font-size:14px; vertical-align:middle; }
+.icon-yes{ color:#2E8B57; font-size:18px; }
+.icon-no{ color:#A31D1D; font-size:18px; }
+
+@media(max-width:992px){
+  .sidebar{ width:90px; padding:18px; }
+  .logo h3, .logo p, .sidebar-menu span, .logout span{ display:none; }
+  .main{ margin-left:90px; }
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="logo">
+    <div class="logo-icon">🍱</div>
+    <div>
+      <h3>DapurKost</h3>
+      <p>Admin Panel</p>
+    </div>
+  </div>
+
+  <div class="sidebar-menu">
+    <a href="dashboard-admin.html"><i class="bi bi-grid-fill"></i><span>Dashboard</span></a>
+    <a href="kelola-paket.html"><i class="bi bi-cup-hot"></i><span>Kelola Menu</span></a>
+    <a href="#" class="active"><i class="bi bi-box-seam"></i><span>Kelola Paket</span></a>
+    <a href="pesanan-admin.html"><i class="bi bi-bag-check"></i><span>Pesanan</span></a>
+    <a href="pelanggan-admin.html"><i class="bi bi-people-fill"></i><span>Pelanggan</span></a>
+    <a href="pembayaran-admin.html"><i class="bi bi-credit-card-2-front"></i><span>Pembayaran</span></a>
+    <a href="laporan.html"><i class="bi bi-bar-chart-line"></i><span>Laporan</span></a>
+  </div>
+
+  <div class="logout">
+    <a href="login-admin.html"><i class="bi bi-box-arrow-right"></i><span>Logout</span></a>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="topbar">
+    <div>
+      <h2>Kelola Paket 📦</h2>
+      <p>Atur paket berlangganan yang tampil di halaman customer.</p>
+    </div>
+    <div class="admin-info">
+      <div class="notification">
+        <i class="bi bi-bell"></i>
+        <span class="badge-notif">3</span>
+      </div>
+      <div class="avatar">👨🏻‍🍳</div>
+    </div>
+  </div>
+
+  <div class="toolbar-card">
+    <p><i class="bi bi-info-circle me-1"></i> Total <b id="totalPaket">3</b> paket aktif ditampilkan di web customer.</p>
+    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#paketModal" onclick="openAddModal()">
+      <i class="bi bi-plus-circle me-1"></i> Tambah Paket
+    </button>
+  </div>
+
+  <!-- GRID PAKET -->
+  <div class="row g-4" id="paketGrid"></div>
+
+  <!-- TABEL PERBANDINGAN -->
+  <div class="table-card">
+    <h4>Tabel Perbandingan Paket</h4>
+    <div class="table-responsive">
+      <table class="table table-hover align-middle" id="compareTable">
+        <thead>
+          <tr>
+            <th>Fitur</th>
+            <th>Paket Harian</th>
+            <th>Paket Mingguan</th>
+            <th>Paket Bulanan</th>
+          </tr>
+        </thead>
+        <tbody id="compareBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<!-- MODAL TAMBAH / EDIT PAKET -->
+<div class="modal fade" id="paketModal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" style="border-radius:18px;">
+      <form id="paketForm">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitle">Tambah Paket</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="paketId">
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Nama Paket</label>
+              <input type="text" class="form-control" id="paketName" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Icon (Bootstrap Icons class)</label>
+              <input type="text" class="form-control" id="paketIcon" placeholder="bi-sun" required>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Harga (Rp)</label>
+              <input type="number" class="form-control" id="paketPrice" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Keterangan Harga</label>
+              <input type="text" class="form-control" id="paketPeriod" placeholder="/ 1x makan" required>
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label">Durasi</label>
+              <input type="text" class="form-control" id="paketDurasi" placeholder="1 Hari" required>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Estimasi Antar</label>
+              <input type="text" class="form-control" id="paketEstimasi" placeholder="± 45 Menit" required>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Menu Berganti</label>
+              <input type="text" class="form-control" id="paketMenuGanti" placeholder="Setiap Hari" required>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Badge</label>
+              <select class="form-select" id="paketBadge">
+                <option value="">Tidak Ada</option>
+                <option value="populer">Paling Populer</option>
+                <option value="hemat">Paling Hemat</option>
+              </select>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label">Keuntungan / Benefit (1 baris = 1 poin)</label>
+              <textarea class="form-control" id="paketBenefits" rows="3" placeholder="Cocok untuk coba-coba dulu&#10;Tanpa kontrak jangka panjang"></textarea>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label d-block">Fitur Tambahan</label>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="paketOngkir">
+                <label class="form-check-label" for="paketOngkir">Gratis Ongkir</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="paketKonsultasi">
+                <label class="form-check-label" for="paketKonsultasi">Konsultasi Menu</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="paketPrioritas">
+                <label class="form-check-label" for="paketPrioritas">Prioritas Pengiriman</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+          <button type="submit" class="btn btn-danger">Simpan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+/* ==================== DATA PAKET (sesuai paket.html customer) ==================== */
+let paketList = [
+  {
+    id: 1,
+    name: "Paket Harian",
+    icon: "bi-sun",
+    price: 15000,
+    period: "/ 1x makan",
+    durasi: "1 Hari",
+    estimasi: "± 45 Menit",
+    menuGanti: "Setiap Hari",
+    badge: "",
+    benefits: [
+      "Cocok untuk coba-coba dulu",
+      "Tanpa kontrak jangka panjang",
+      "Bisa pesan kapan saja"
+    ],
+    ongkir: false,
+    konsultasi: false,
+    prioritas: false
+  },
+  {
+    id: 2,
+    name: "Paket Mingguan",
+    icon: "bi-calendar-week",
+    price: 95000,
+    period: "/ 7 hari (2x makan/hari)",
+    durasi: "7 Hari",
+    estimasi: "± 30 Menit",
+    menuGanti: "Setiap Hari",
+    badge: "populer",
+    benefits: [
+      "Gratis ongkir seluruh area kost",
+      "Bisa ganti menu 2x dalam seminggu",
+      "Prioritas jadwal pengantaran"
+    ],
+    ongkir: true,
+    konsultasi: false,
+    prioritas: true
+  },
+  {
+    id: 3,
+    name: "Paket Bulanan",
+    icon: "bi-calendar-month",
+    price: 350000,
+    period: "/ 30 hari (2x makan/hari)",
+    durasi: "30 Hari",
+    estimasi: "± 30 Menit",
+    menuGanti: "Setiap Hari",
+    badge: "hemat",
+    benefits: [
+      "Harga per porsi paling murah",
+      "Konsultasi menu mingguan gratis",
+      "Bebas pilih semua menu tersedia"
+    ],
+    ongkir: true,
+    konsultasi: true,
+    prioritas: true
+  }
+];
+
+function formatRupiah(num){
+  return "Rp" + num.toLocaleString("id-ID");
+}
+
+/* ==================== RENDER GRID PAKET ==================== */
+function renderGrid(){
+  const grid = document.getElementById("paketGrid");
+  document.getElementById("totalPaket").textContent = paketList.length;
+
+  grid.innerHTML = paketList.map(p => {
+    const badgeHtml = p.badge === "populer"
+      ? `<div class="paket-badge populer"><i class="bi bi-stars"></i> Paling Populer</div>`
+      : p.badge === "hemat"
+      ? `<div class="paket-badge hemat"><i class="bi bi-piggy-bank"></i> Paling Hemat</div>`
+      : "";
+
+    const benefitsHtml = p.benefits.map(b => `<li><i class="bi bi-check-circle-fill"></i> ${b}</li>`).join("");
+
+    return `
+    <div class="col-lg-4 col-md-6">
+      <div class="paket-card ${p.badge}">
+        ${badgeHtml}
+        <div class="paket-icon"><i class="bi ${p.icon}"></i></div>
+        <h4>${p.name}</h4>
+        <span class="paket-price">${formatRupiah(p.price)}</span>
+        <span class="paket-period">${p.period}</span>
+
+        <div class="paket-info-row"><span><i class="bi bi-clock"></i> Durasi</span><span>${p.durasi}</span></div>
+        <div class="paket-info-row"><span><i class="bi bi-truck"></i> Estimasi Antar</span><span>${p.estimasi}</span></div>
+        <div class="paket-info-row"><span><i class="bi bi-arrow-repeat"></i> Menu Berganti</span><span>${p.menuGanti}</span></div>
+
+        <ul class="paket-benefit-list">${benefitsHtml}</ul>
+
+        <div class="paket-extra">
+          <span class="tag ${p.ongkir ? 'tag-yes' : 'tag-no'}"><i class="bi ${p.ongkir ? 'bi-check-circle' : 'bi-x-circle'}"></i> Gratis Ongkir</span>
+          <span class="tag ${p.konsultasi ? 'tag-yes' : 'tag-no'}"><i class="bi ${p.konsultasi ? 'bi-check-circle' : 'bi-x-circle'}"></i> Konsultasi Menu</span>
+          <span class="tag ${p.prioritas ? 'tag-yes' : 'tag-no'}"><i class="bi ${p.prioritas ? 'bi-check-circle' : 'bi-x-circle'}"></i> Prioritas Antar</span>
+        </div>
+
+        <div class="paket-actions">
+          <button class="btn btn-outline-dark" onclick="openEditModal(${p.id})"><i class="bi bi-pencil-square"></i> Edit</button>
+          <button class="btn btn-outline-danger" onclick="deletePaket(${p.id})"><i class="bi bi-trash"></i> Hapus</button>
+        </div>
+      </div>
+    </div>`;
+  }).join("");
+
+  renderCompareTable();
+}
+
+/* ==================== RENDER TABEL PERBANDINGAN ==================== */
+function renderCompareTable(){
+  const thead = document.querySelector("#compareTable thead tr");
+  thead.innerHTML = `<th>Fitur</th>` + paketList.map(p => `<th>${p.name}</th>`).join("");
+
+  const rows = [
+    { label: "Harga", getVal: p => formatRupiah(p.price) + " " + p.period },
+    { label: "Durasi", getVal: p => p.durasi },
+    { label: "Estimasi Pengiriman", getVal: p => p.estimasi },
+    { label: "Menu Berganti Setiap Hari", getVal: p => p.menuGanti },
+    { label: "Gratis Ongkir", getVal: p => p.ongkir ? `<i class="bi bi-check-circle-fill icon-yes"></i>` : `<i class="bi bi-x-circle icon-no"></i>` },
+    { label: "Konsultasi Menu", getVal: p => p.konsultasi ? `<i class="bi bi-check-circle-fill icon-yes"></i>` : `<i class="bi bi-x-circle icon-no"></i>` },
+    { label: "Prioritas Pengiriman", getVal: p => p.prioritas ? `<i class="bi bi-check-circle-fill icon-yes"></i>` : `<i class="bi bi-x-circle icon-no"></i>` }
+  ];
+
+  const body = document.getElementById("compareBody");
+  body.innerHTML = rows.map(row => `
+    <tr>
+      <td>${row.label}</td>
+      ${paketList.map(p => `<td>${row.getVal(p)}</td>`).join("")}
+    </tr>
+  `).join("");
+}
+
+/* ==================== MODAL TAMBAH ==================== */
+function openAddModal(){
+  document.getElementById("modalTitle").textContent = "Tambah Paket";
+  document.getElementById("paketForm").reset();
+  document.getElementById("paketId").value = "";
+}
+
+/* ==================== MODAL EDIT ==================== */
+function openEditModal(id){
+  const p = paketList.find(x => x.id === id);
+  if(!p) return;
+
+  document.getElementById("modalTitle").textContent = "Edit Paket";
+  document.getElementById("paketId").value = p.id;
+  document.getElementById("paketName").value = p.name;
+  document.getElementById("paketIcon").value = p.icon;
+  document.getElementById("paketPrice").value = p.price;
+  document.getElementById("paketPeriod").value = p.period;
+  document.getElementById("paketDurasi").value = p.durasi;
+  document.getElementById("paketEstimasi").value = p.estimasi;
+  document.getElementById("paketMenuGanti").value = p.menuGanti;
+  document.getElementById("paketBadge").value = p.badge;
+  document.getElementById("paketBenefits").value = p.benefits.join("\n");
+  document.getElementById("paketOngkir").checked = p.ongkir;
+  document.getElementById("paketKonsultasi").checked = p.konsultasi;
+  document.getElementById("paketPrioritas").checked = p.prioritas;
+
+  const modal = new bootstrap.Modal(document.getElementById("paketModal"));
+  modal.show();
+}
+
+/* ==================== SIMPAN (TAMBAH / EDIT) ==================== */
+document.getElementById("paketForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const id = document.getElementById("paketId").value;
+  const data = {
+    name: document.getElementById("paketName").value,
+    icon: document.getElementById("paketIcon").value.trim() || "bi-box-seam",
+    price: parseInt(document.getElementById("paketPrice").value),
+    period: document.getElementById("paketPeriod").value,
+    durasi: document.getElementById("paketDurasi").value,
+    estimasi: document.getElementById("paketEstimasi").value,
+    menuGanti: document.getElementById("paketMenuGanti").value,
+    badge: document.getElementById("paketBadge").value,
+    benefits: document.getElementById("paketBenefits").value.split("\n").map(s => s.trim()).filter(Boolean),
+    ongkir: document.getElementById("paketOngkir").checked,
+    konsultasi: document.getElementById("paketKonsultasi").checked,
+    prioritas: document.getElementById("paketPrioritas").checked
+  };
+
+  if(id){
+    const p = paketList.find(x => x.id == id);
+    Object.assign(p, data);
+  } else {
+    const newId = paketList.length ? Math.max(...paketList.map(x => x.id)) + 1 : 1;
+    paketList.push({ id: newId, ...data });
+  }
+
+  renderGrid();
+  bootstrap.Modal.getInstance(document.getElementById("paketModal")).hide();
+});
+
+/* ==================== HAPUS PAKET ==================== */
+function deletePaket(id){
+  if(confirm("Yakin ingin menghapus paket ini? Paket ini juga akan hilang dari halaman customer.")){
+    paketList = paketList.filter(p => p.id !== id);
+    renderGrid();
+  }
+}
+
+/* ==================== INIT ==================== */
+renderGrid();
+</script>
+
+</body>
+</html>
