@@ -32,700 +32,20 @@ rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
 rel="stylesheet">
 
-<style>
-
-:root{
-
---cream:#FEF9E1;
---white:#FFFFFF;
---red:#A31D1D;
---dark:#6D2323;
---gold:#E5D0AC;
---text:#2B2B2B;
---gray:#777;
-
---shadow:
-0 10px 30px rgba(0,0,0,.08);
-
-}
-
-*{
-
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-
-}
-
-body{
-
-background:var(--cream);
-color:var(--text);
-
-}
-
-/* ==========================
-SIDEBAR
-========================== */
-
-.sidebar{
-
-position:fixed;
-
-top:0;
-left:0;
-
-width:230px;
-
-height:100vh;
-
-background:linear-gradient(
-180deg,
-var(--red),
-var(--dark));
-
-padding:18px 20px;
-
-color:white;
-
-display:flex;
-
-flex-direction:column;
-
-}
-
-.logo{
-
-display:flex;
-
-align-items:center;
-
-gap:12px;
-
-margin-bottom:18px;
-
-}
-
-.logo-icon{
-
-width: 48px;
-height: 48px;
-
-border-radius:15px;
-
-background:rgba(255,255,255,.15);
-
-display:flex;
-
-justify-content:center;
-align-items:center;
-
-font-size:24px;
-
-}
-
-.logo h3{
-
-margin:0;
-
-font-size:20px;
-
-font-weight:700;
-
-}
-
-.logo p{
-
-margin:0;
-
-opacity:.8;
-
-font-size:13px;
-
-}
-
-/* ==========================
-MENU
-========================== */
-
-.sidebar-menu{
-
-margin-top:0px;
-
-}
-
-.sidebar-menu a{
-
-display:flex;
-
-align-items:center;
-
-gap:14px;
-
-text-decoration:none;
-
-color:white;
-
-padding:15px 18px;
-
-border-radius:14px;
-
-margin-bottom:8px;
-
-transition:.25s;
-
-font-weight:500;
-
-}
-
-.sidebar-menu a:hover{
-
-background:rgba(255,255,255,.15);
-
-transform:translateX(5px);
-
-}
-
-.sidebar-menu .active{
-
-background:white;
-
-color:var(--red);
-
-font-weight:600;
-
-}
-
-.sidebar-menu i{
-
-font-size:16px;
-
-width:22px;
-
-}
-
-/* ==========================
-LOGOUT
-========================== */
-
-.logout{
-
-margin-top:auto;
-
-}
-
-.logout a{
-
-display:flex;
-
-align-items:center;
-
-gap:12px;
-
-text-decoration:none;
-
-padding:15px 18px;
-
-border-radius:16px;
-
-background:rgba(255,255,255,.12);
-
-color:white;
-
-transition:.3s;
-
-}
-
-.logout a:hover{
-
-background:white;
-
-color:var(--red);
-
-}
-
-/* ==========================
-CONTENT
-========================== */
-
-.main{
-
-margin-left:230px;
-
-padding:24px 28px;
-
-}
-
-/* ==========================
-TOPBAR
-========================== */
-
-.topbar{
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-margin-bottom:35px;
-
-}
-
-.topbar h2{
-
-font-weight:700;
-
-font-size:34px;
-
-color:var(--dark);
-
-margin-bottom:5px;
-
-}
-
-.topbar p{
-
-margin:0;
-
-font-size:16px;
-
-color:var(--gray);
-
-}
-
-.admin-info{
-
-display:flex;
-
-align-items:center;
-
-gap:15px;
-
-}
-
-.notification{
-
-position:relative;
-
-font-size:24px;
-
-cursor:pointer;
-
-}
-
-.badge-notif{
-
-position:absolute;
-
-top:-6px;
-right:-6px;
-
-background:#dc3545;
-
-color:white;
-
-font-size:11px;
-
-width:18px;
-height:18px;
-
-border-radius:50%;
-
-display:flex;
-
-justify-content:center;
-align-items:center;
-
-}
-
-.avatar{
-
-width:42px;
-height:42px;
-
-border-radius:50%;
-
-background:var(--gold);
-
-display:flex;
-
-justify-content:center;
-align-items:center;
-
-font-size:24px;
-
-}
-
-/* ==========================
-CARD
-========================== */
-
-.dashboard-card{
-
-background:white;
-
-border:none;
-
-border-radius:18px;
-
-padding:18px;
-
-box-shadow:var(--shadow);
-
-transition:.25s;
-
-height:100%;
-
-}
-
-.dashboard-card:hover{
-
-transform:translateY(-4px);
-
-}
-
-.card-icon{
-
-width:52px;
-height:52px;
-
-border-radius:18px;
-
-display:flex;
-
-justify-content:center;
-align-items:center;
-
-font-size:22px;
-
-margin-bottom:14px;
-
-color:white;
-
-}
-
-.bg-red{
-
-background:var(--red);
-
-}
-
-.bg-gold{
-
-background:#D4A017;
-
-}
-
-.bg-green{
-
-background:#2E8B57;
-
-}
-
-.bg-blue{
-
-background:#3B82F6;
-
-}
-
-.dashboard-card h3{
-
-font-size:28px;
-
-font-weight:700;
-
-margin:4px 0;
-
-}
-
-.dashboard-card p{
-
-font-size:15px;
-margin:0;
-
-color:var(--gray);
-
-}
-
-.dashboard-card small{
-
-font-size:13px;
-
-}
-
-.table-card,
-.quick-card{
-
-margin-top:30px;
-
-background:white;
-
-border-radius:18px;
-
-padding:20px;
-
-box-shadow:var(--shadow);
-
-}
-
-.table-card h4,
-.quick-card h4{
-
-font-weight:700;
-
-font-size:22px;
-color:var(--dark);
-
-margin-bottom:20px;
-
-}
-.table th,
-.table td{
-
-padding:12px;
-
-font-size:14px;
-
-vertical-align:middle;
-
-}
-
-.quick-card .btn{
-
-padding:10px;
-
-font-size:15px;
-
-border-radius:12px;
-
-}
-
-/* ==========================
-KELOLA PELANGGAN — TAMBAHAN
-========================== */
-
-.pelanggan-toolbar{
-
-display:flex;
-
-align-items:center;
-
-justify-content:space-between;
-
-gap:12px;
-
-margin-bottom:20px;
-
-flex-wrap:wrap;
-
-}
-
-.pelanggan-search{
-
-position:relative;
-
-flex:1;
-
-min-width:220px;
-
-max-width:320px;
-
-}
-
-.pelanggan-search i{
-
-position:absolute;
-
-top:50%;
-
-left:14px;
-
-transform:translateY(-50%);
-
-color:var(--gray);
-
-font-size:14px;
-
-}
-
-.pelanggan-search input{
-
-border-radius:12px;
-
-padding:10px 14px 10px 38px;
-
-border:1.5px solid #eee;
-
-font-size:14px;
-
-width:100%;
-
-}
-
-.pelanggan-search input:focus{
-
-outline:none;
-
-border-color:var(--red);
-
-box-shadow:0 0 0 3px rgba(163,29,29,.08);
-
-}
-
-.pelanggan-filter select{
-
-border-radius:12px;
-
-padding:10px 14px;
-
-border:1.5px solid #eee;
-
-font-size:14px;
-
-background:white;
-
-}
-
-.pelanggan-filter select:focus{
-
-outline:none;
-
-border-color:var(--red);
-
-}
-
-.avatar-sm{
-
-width:38px;
-height:38px;
-
-border-radius:50%;
-
-background:var(--cream);
-
-border:1.5px solid var(--gold);
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-font-size:16px;
-
-font-weight:600;
-
-color:var(--dark);
-
-flex-shrink:0;
-
-}
-
-.pelanggan-nama{
-
-display:flex;
-
-align-items:center;
-
-gap:10px;
-
-}
-
-.pelanggan-nama-text strong{
-
-display:block;
-
-font-size:14px;
-
-color:var(--text);
-
-}
-
-.pelanggan-nama-text small{
-
-color:var(--gray);
-
-font-size:12px;
-
-}
-
-.action-btns{
-
-display:flex;
-
-gap:6px;
-
-flex-wrap:nowrap;
-
-}
-
-.action-btns .btn{
-
-border-radius:10px;
-
-padding:6px 10px;
-
-font-size:13px;
-
-}
-
-/* ==========================
-RESPONSIVE
-========================== */
-
-@media(max-width:992px){
-
-.sidebar{
-
-width:90px;
-
-padding:18px;
-
-}
-
-.logo h3,
-.logo p,
-.sidebar-menu span,
-.logout span{
-
-display:none;
-
-}
-
-.main{
-
-margin-left:90px;
-
-}
-
-}
-
-@media(max-width:768px){
-
-.pelanggan-toolbar{
-
-flex-direction:column;
-
-align-items:stretch;
-
-}
-
-.pelanggan-search{
-
-max-width:100%;
-
-}
-
-}
-
-</style>
-
-
+<link rel="stylesheet" href="../assets/css/admin.css">
 </head>
 
 <body>
+
+<!-- TOAST NOTIFIKASI -->
+<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index:1080;">
+  <div id="appToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="appToastBody">Berhasil.</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
 
 <div class="sidebar">
 
@@ -735,7 +55,7 @@ max-width:100%;
 
         <div class="logo-icon">
 
-            🍱
+            <img src="../assets/images/logo.png" alt="Logo DapurKost" class="logo-img">
 
         </div>
 
@@ -809,13 +129,21 @@ max-width:100%;
 
         </a>
 
+        <a href="ai-assistant.html">
+
+            <i class="bi bi-stars"></i>
+
+            <span>AI Assistant</span>
+
+        </a>
+
     </div>
 
     <!-- LOGOUT -->
 
     <div class="logout">
 
-        <a href="login-admin.html">
+        <a href="login-admin.html" data-bs-toggle="modal" data-bs-target="#logoutModal">
 
             <i class="bi bi-box-arrow-right"></i>
 
@@ -855,16 +183,56 @@ MAIN CONTENT
 
         <div class="admin-info">
 
-            <div class="notification">
-
-                <i class="bi bi-bell"></i>
-
-                <span class="badge-notif">
-
-                    3
-
-                </span>
-
+            <div class="dropdown">
+                <div class="notification" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                    <i class="bi bi-bell"></i>
+                    <span class="badge-notif">3</span>
+                </div>
+                <ul class="dropdown-menu dropdown-menu-end shadow border-0 p-2" style="width:330px; border-radius:16px;">
+                    <li class="d-flex justify-content-between align-items-center px-2 py-1">
+                        <span class="fw-semibold" style="color:var(--dark);">Notifikasi</span>
+                        <span class="badge bg-danger rounded-pill">3 Baru</span>
+                    </li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <a class="dropdown-item rounded-3 py-2 mb-1" href="#">
+                            <div class="d-flex gap-2">
+                                <i class="bi bi-person-plus text-danger mt-1"></i>
+                                <div>
+                                    <div class="small fw-semibold">Pelanggan baru mendaftar</div>
+                                    <div class="small text-muted">Ervina Riszan bergabung sebagai pelanggan</div>
+                                    <div class="text-muted" style="font-size:11px;">30 menit lalu</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item rounded-3 py-2 mb-1" href="#">
+                            <div class="d-flex gap-2">
+                                <i class="bi bi-geo-alt text-danger mt-1"></i>
+                                <div>
+                                    <div class="small fw-semibold">Alamat diperbarui</div>
+                                    <div class="small text-muted">Fadila Putri Hartanto mengubah alamat kost</div>
+                                    <div class="text-muted" style="font-size:11px;">2 jam lalu</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item rounded-3 py-2" href="#">
+                            <div class="d-flex gap-2">
+                                <i class="bi bi-person-dash text-danger mt-1"></i>
+                                <div>
+                                    <div class="small fw-semibold">Pelanggan nonaktif</div>
+                                    <div class="small text-muted">2 pelanggan tidak ada pesanan lebih dari 30 hari</div>
+                                    <div class="text-muted" style="font-size:11px;">1 hari lalu</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item text-center small fw-semibold text-danger rounded-3" href="notifikasi-admin.html">Lihat Semua Notifikasi</a></li>
+                </ul>
             </div>
 
             <div class="avatar">
@@ -1057,7 +425,7 @@ MAIN CONTENT
 
                                         <div class="pelanggan-nama-text">
 
-                                            <strong>Salsa Billa</strong>
+                                            <strong>Salsa Billa Aurilia</strong>
 
                                             <small>Bergabung 12 Jan 2026</small>
 
@@ -1075,7 +443,7 @@ MAIN CONTENT
 
                                 <td>
 
-                                    <span class="badge bg-success">Aktif</span>
+                                    <span class="badge badge-aktif">Aktif</span>
 
                                 </td>
 
@@ -1137,7 +505,7 @@ MAIN CONTENT
 
                                 <td>
 
-                                    <span class="badge bg-success">Aktif</span>
+                                    <span class="badge badge-aktif">Aktif</span>
 
                                 </td>
 
@@ -1199,7 +567,7 @@ MAIN CONTENT
 
                                 <td>
 
-                                    <span class="badge bg-success">Aktif</span>
+                                    <span class="badge badge-aktif">Aktif</span>
 
                                 </td>
 
@@ -1239,11 +607,11 @@ MAIN CONTENT
 
                                     <div class="pelanggan-nama">
 
-                                        <div class="avatar-sm">D</div>
+                                        <div class="avatar-sm">A</div>
 
                                         <div class="pelanggan-nama-text">
 
-                                            <strong>Dewi Kartika</strong>
+                                            <strong>Astri Wahyu Lestari</strong>
 
                                             <small>Bergabung 25 Nov 2025</small>
 
@@ -1253,7 +621,7 @@ MAIN CONTENT
 
                                 </td>
 
-                                <td>dewi.kartika@gmail.com</td>
+                                <td>astri.wahyu@gmail.com</td>
 
                                 <td>0821-9988-0011</td>
 
@@ -1261,7 +629,7 @@ MAIN CONTENT
 
                                 <td>
 
-                                    <span class="badge bg-secondary">Nonaktif</span>
+                                    <span class="badge badge-nonaktif">Nonaktif</span>
 
                                 </td>
 
@@ -1305,7 +673,7 @@ MAIN CONTENT
 
                                         <div class="pelanggan-nama-text">
 
-                                            <strong>Fadila Putri</strong>
+                                            <strong>Fadila Putri Hartanto</strong>
 
                                             <small>Bergabung 02 Mar 2026</small>
 
@@ -1323,7 +691,7 @@ MAIN CONTENT
 
                                 <td>
 
-                                    <span class="badge bg-success">Aktif</span>
+                                    <span class="badge badge-aktif">Aktif</span>
 
                                 </td>
 
@@ -1363,11 +731,11 @@ MAIN CONTENT
 
                                     <div class="pelanggan-nama">
 
-                                        <div class="avatar-sm">B</div>
+                                        <div class="avatar-sm">E</div>
 
                                         <div class="pelanggan-nama-text">
 
-                                            <strong>Bagas Setiawan</strong>
+                                            <strong>Ervina Riszan</strong>
 
                                             <small>Bergabung 14 Okt 2025</small>
 
@@ -1377,7 +745,7 @@ MAIN CONTENT
 
                                 </td>
 
-                                <td>bagas.setiawan@gmail.com</td>
+                                <td>ervina.riszan@gmail.com</td>
 
                                 <td>0838-1122-9900</td>
 
@@ -1385,7 +753,7 @@ MAIN CONTENT
 
                                 <td>
 
-                                    <span class="badge bg-secondary">Nonaktif</span>
+                                    <span class="badge badge-nonaktif">Nonaktif</span>
 
                                 </td>
 
@@ -1557,148 +925,47 @@ MAIN CONTENT
     </div>
   </div>
 </div>
+
+<!-- MODAL KONFIRMASI HAPUS PELANGGAN -->
+<div class="modal fade" id="deletePelangganModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border-radius:18px;">
+      <div class="modal-body text-center p-4">
+        <i class="bi bi-trash3 text-danger" style="font-size:42px;"></i>
+        <h5 class="mt-3 mb-1">Yakin hapus pelanggan <span id="deletePelangganName" class="text-danger">ini</span>?</h5>
+        <p class="text-muted mb-4">Data yang sudah dihapus tidak dapat dikembalikan.</p>
+        <div class="d-flex gap-2 justify-content-center">
+          <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">Batal</button>
+          <button type="button" class="btn btn-danger px-4" id="confirmDeletePelangganBtn">Ya, Hapus</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL KONFIRMASI LOGOUT -->
+<div class="modal fade" id="logoutModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border-radius:18px;">
+      <div class="modal-body text-center p-4">
+        <i class="bi bi-box-arrow-right text-danger" style="font-size:42px;"></i>
+        <h5 class="mt-3 mb-1">Keluar dari Admin Panel?</h5>
+        <p class="text-muted mb-4">Anda perlu login kembali untuk mengakses dashboard.</p>
+        <div class="d-flex gap-2 justify-content-center">
+          <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">Batal</button>
+          <a href="login-admin.html" class="btn btn-danger px-4">Ya, Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Bootstrap JS -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<script>
-
-document.querySelector(".logout a").addEventListener("click", function(e){
-    if(!confirm("Yakin ingin logout?")){
-        e.preventDefault();
-    }
-});
-
-// Pencarian + filter status sederhana (client-side, data dummy)
-const searchInput = document.getElementById("searchPelanggan");
-const filterStatus = document.getElementById("filterStatus");
-const tabel = document.getElementById("tabelPelanggan");
-const emptyState = document.getElementById("emptyState");
-
-function terapkanFilter(){
-    const kataKunci = searchInput.value.toLowerCase().trim();
-    const status = filterStatus.value;
-    const baris = tabel.querySelectorAll("tbody tr");
-    let jumlahTampil = 0;
-
-    baris.forEach(function(tr){
-        const teks = tr.innerText.toLowerCase();
-        const statusBaris = tr.dataset.status;
-        const cocokKataKunci = teks.includes(kataKunci);
-        const cocokStatus = (status === "semua") || (status === statusBaris);
-
-        if(cocokKataKunci && cocokStatus){
-            tr.style.display = "";
-            jumlahTampil++;
-        } else {
-            tr.style.display = "none";
-        }
-    });
-
-    emptyState.classList.toggle("d-none", jumlahTampil !== 0);
-}
-
-searchInput.addEventListener("input", terapkanFilter);
-filterStatus.addEventListener("change", terapkanFilter);
-
-/* ==================== AMBIL DATA DARI BARIS ==================== */
-function ambilDataBaris(tr){
-    return {
-        id: tr.children[0].innerText.trim(),
-        nama: tr.querySelector(".pelanggan-nama-text strong").innerText.trim(),
-        join: tr.querySelector(".pelanggan-nama-text small").innerText.trim(),
-        email: tr.children[2].innerText.trim(),
-        hp: tr.children[3].innerText.trim(),
-        alamat: tr.children[4].innerText.trim(),
-        status: tr.dataset.status
-    };
-}
-
-/* ==================== DETAIL (ICON MATA) ==================== */
-const detailModal = new bootstrap.Modal(document.getElementById("detailModal"));
-
-tabel.addEventListener("click", function(e){
-    const btnDetail = e.target.closest('[title="Detail"]');
-    if(!btnDetail) return;
-
-    const tr = btnDetail.closest("tr");
-    const data = ambilDataBaris(tr);
-
-    document.getElementById("detailAvatar").textContent = data.nama.charAt(0);
-    document.getElementById("detailNama").textContent = data.nama;
-    document.getElementById("detailJoin").textContent = data.join;
-    document.getElementById("detailId").textContent = data.id;
-    document.getElementById("detailEmail").textContent = data.email;
-    document.getElementById("detailHp").textContent = data.hp;
-    document.getElementById("detailAlamat").textContent = data.alamat;
-    document.getElementById("detailStatus").innerHTML = data.status === "aktif"
-        ? '<span class="badge bg-success">Aktif</span>'
-        : '<span class="badge bg-secondary">Nonaktif</span>';
-
-    detailModal.show();
-});
-
-/* ==================== EDIT ==================== */
-const editModal = new bootstrap.Modal(document.getElementById("editModal"));
-let editingRow = null;
-
-tabel.addEventListener("click", function(e){
-    const btnEdit = e.target.closest('[title="Edit"]');
-    if(!btnEdit) return;
-
-    const tr = btnEdit.closest("tr");
-    editingRow = tr;
-    const data = ambilDataBaris(tr);
-
-    document.getElementById("editNama").value = data.nama;
-    document.getElementById("editEmail").value = data.email;
-    document.getElementById("editHp").value = data.hp;
-    document.getElementById("editAlamat").value = data.alamat;
-    document.getElementById("editStatus").value = data.status;
-
-    editModal.show();
-});
-
-document.getElementById("editForm").addEventListener("submit", function(e){
-    e.preventDefault();
-    if(!editingRow) return;
-
-    const namaBaru = document.getElementById("editNama").value;
-    const emailBaru = document.getElementById("editEmail").value;
-    const hpBaru = document.getElementById("editHp").value;
-    const alamatBaru = document.getElementById("editAlamat").value;
-    const statusBaru = document.getElementById("editStatus").value;
-
-    // update tampilan baris
-    editingRow.querySelector(".pelanggan-nama-text strong").textContent = namaBaru;
-    editingRow.querySelector(".avatar-sm").textContent = namaBaru.charAt(0);
-    editingRow.children[2].textContent = emailBaru;
-    editingRow.children[3].textContent = hpBaru;
-    editingRow.children[4].textContent = alamatBaru;
-
-    editingRow.dataset.status = statusBaru;
-    editingRow.children[5].innerHTML = statusBaru === "aktif"
-        ? '<span class="badge bg-success">Aktif</span>'
-        : '<span class="badge bg-secondary">Nonaktif</span>';
-
-    editModal.hide();
-    editingRow = null;
-});
-
-/* ==================== HAPUS ==================== */
-tabel.addEventListener("click", function(e){
-    const btnHapus = e.target.closest(".btn-danger[title='Hapus']");
-    if(!btnHapus) return;
-
-    const tr = btnHapus.closest("tr");
-    const data = ambilDataBaris(tr);
-
-    if(confirm(`Yakin ingin menghapus pelanggan "${data.nama}"?`)){
-        tr.remove();
-        terapkanFilter();
-    }
-});
-</script>
+<script src="../assets/js/admin.js"></script>
+<script src="../assets/js/pelanggan.js"></script>
 
 </body>
 
