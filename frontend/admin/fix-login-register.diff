@@ -1,0 +1,24 @@
+diff --git a/frontend/admin/login-admin.html b/frontend/admin/login-admin.html
+index 8718f17..44d8e5a 100644
+--- a/frontend/admin/login-admin.html
++++ b/frontend/admin/login-admin.html
+@@ -167,6 +167,7 @@
+ </div>
+ 
+ <!-- SCRIPT -->
++<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+ <script src="../assets/js/admin.js"></script>
+ <script src="../assets/js/login.js"></script>
+ 
+diff --git a/frontend/admin/register.html b/frontend/admin/register.html
+index 31973d5..5d0893f 100644
+--- a/frontend/admin/register.html
++++ b/frontend/admin/register.html
+@@ -191,6 +191,7 @@ Login
+ 
+ </div>
+ 
++<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+ <script src="../assets/js/admin.js"></script>
+ <script src="../assets/js/register.js"></script>
+ 
