@@ -69,7 +69,24 @@
     <div><i class="bi bi-receipt-cutoff text-danger"></i> Total Transaksi: <strong id="ringkasanTransaksi">-</strong></div>
     <div><i class="bi bi-cash-stack text-danger"></i> Pendapatan: <strong id="ringkasanPendapatan">-</strong></div>
     <div><i class="bi bi-bag-check text-danger"></i> Jumlah Pesanan: <strong id="ringkasanPesanan">-</strong></div>
-    <div class="text-muted small ms-auto">Preview data yang akan diexport &rarr;</div>
+    <button type="button" class="btn btn-outline-danger btn-sm ms-auto" data-bs-toggle="collapse" data-bs-target="#previewExportBox" aria-expanded="false" aria-controls="previewExportBox">
+      Preview Data Export <i class="bi bi-chevron-down"></i>
+    </button>
+  </div>
+
+  <!-- PREVIEW DATA EXPORT (isi sebenarnya, bukan hanya ikon/panah) -->
+  <div class="collapse" id="previewExportBox">
+    <div class="table-card mt-0">
+      <h5 class="mb-3"><i class="bi bi-table me-1"></i> Preview Data yang Akan Diexport</h5>
+      <div class="table-responsive">
+        <table class="table table-sm table-hover align-middle mb-0" id="previewExportTable">
+          <thead>
+            <tr><th>Sheet</th><th>Ringkasan Isi</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
   <!-- STATS -->
@@ -190,4 +207,4 @@
 <script src="../assets/js/laporan.js"></script>
 
 </body>
-</html>s
+</html>

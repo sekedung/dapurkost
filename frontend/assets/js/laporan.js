@@ -224,9 +224,46 @@ function renderRingkasanExport(){
   document.getElementById("ringkasanPesanan").textContent = dataLaporan.ringkasan.pesanan + " pesanan";
 }
 
+/* ==================== PREVIEW DATA EXPORT ==================== */
+function renderPreviewExport(){
+  const tbody = document.querySelector("#previewExportTable tbody");
+  if(!tbody) return;
+
+  const baris = [
+    {
+      sheet: "Ringkasan",
+      isi: `Pendapatan ${dataLaporan.ringkasan.pendapatan}, ${dataLaporan.ringkasan.pesanan} pesanan, ${dataLaporan.ringkasan.pelanggan} pelanggan, ${dataLaporan.ringkasan.menuAktif} menu aktif`
+    },
+    {
+      sheet: "Pendapatan Bulanan",
+      isi: dataLaporan.pendapatanBulanan.map(d => `${d.bulan}: ${formatRupiah(d.nilai)}`).join(" &middot; ")
+    },
+    {
+      sheet: "Pesanan Mingguan",
+      isi: dataLaporan.pesananMingguan.map(d => `${d.hari}: ${d.jumlah}`).join(" &middot; ")
+    },
+    {
+      sheet: "Menu Terlaris",
+      isi: dataLaporan.menuTerlaris.map(d => `${d.nama} (${d.jumlah}x)`).join(" &middot; ")
+    },
+    {
+      sheet: "Paket Favorit",
+      isi: dataLaporan.paketFavorit.map(d => `${d.nama}: ${d.total} pemesan`).join(" &middot; ")
+    }
+  ];
+
+  tbody.innerHTML = baris.map(b => `
+    <tr>
+      <td class="fw-semibold" style="width:180px;">${b.sheet}</td>
+      <td class="text-muted small">${b.isi}</td>
+    </tr>
+  `).join("");
+}
+
 /* ==================== INIT ==================== */
 renderRingkasanExport();
 renderPendapatanBulanan();
 renderPesananMingguan();
 renderMenuTerlaris();
 renderPaketFavorit();
+renderPreviewExport();
